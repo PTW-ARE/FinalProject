@@ -1,22 +1,48 @@
-import React from 'react';
+import React , {useState} from 'react';
 import { withExpoSnack } from 'nativewind';
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity,Alert } from 'react-native';
 import { styled } from 'nativewind';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledTextInput = styled(TextInput);
 const StyledTouchableOpacity = styled(TouchableOpacity);
 
+
 const Login = ({}) => {
+
+  const [UserName, setUserName] = useState('');
+  const [Password, setPassword] = useState('');
 
   const navigation = useNavigation();
 
-  const handleLogin = () => {
-    // นำทางไปยังหน้า Menu เมื่อเข้าสู่ระบบสำเร็จ
-    navigation.navigate('Menu');
+  const handleLogin = async () => {
+    try {
+      // เรียก API ด้วย axios
+      const response = await axios.post('http://172.28.159.77:8000/api/authen_request', {
+        UserName: UserName,
+        Password: Password,
+      });
+
+      // ตรวจสอบผลลัพธ์จาก API
+      if (response.data.result) {
+        // หากเข้าสู่ระบบสำเร็จ
+        navigation.navigate('Menu');
+
+      } else {
+        // หากเข้าสู่ระบบไม่สำเร็จ
+        Alert.alert('กรุณาลองใหม่', response.data.message);
+      }
+    } catch (error) {
+      // จัดการข้อผิดพลาดที่เกิดขึ้น
+      console.error(error);
+      Alert.alert('คำเตือน', 'เกิดข้อผิดพลาด');
+    }
   };
+
+  
 
   const handleRegister = () => {
     // นำทางไปยังหน้า Menu เมื่อเข้าสู่ระบบสำเร็จ
@@ -35,6 +61,8 @@ const Login = ({}) => {
           className="p-4 bg-white rounded-lg"
           placeholder="Username"
           placeholderTextColor="#999"
+          value={UserName}
+          onChangeText={setUserName}
         />
       </StyledView>
 
@@ -45,6 +73,8 @@ const Login = ({}) => {
           placeholder="Password"
           placeholderTextColor="#999"
           secureTextEntry
+          value={Password}
+          onChangeText={setPassword}
         />
       </StyledView>
 

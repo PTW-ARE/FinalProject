@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withExpoSnack } from 'nativewind';
 import { Text, View, TextInput, TouchableOpacity, Alert, ScrollView } from 'react-native';
 import { styled } from 'nativewind';
@@ -11,12 +11,13 @@ const StyledTextInput = styled(TextInput);
 const StyledTouchableOpacity = styled(TouchableOpacity);
 
 const Register = () => {
-    const [Username, setUsername] = useState('');
-    const [Firstname, setFirstName] = useState('');
-    const [Lastname, setLastName] = useState('');
-    const [dob, setDob] = useState('');
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
+    const [CustomerID, setCustomerID] = useState(''); // สำหรับ CustomerID
+    const [UserName, setUsername] = useState('');
+    const [FirstName, setFirstName] = useState('');
+    const [LastName, setLastName] = useState('');
+    const [BirthDate, setBirthDate] = useState('');
+    const [Password, setPassword] = useState('');
+    const [Email, setEmail] = useState('');
 
     const navigation = useNavigation();
 
@@ -38,38 +39,41 @@ const Register = () => {
 
 
     const handleRegister = async () => {
-        if (!Username || !Firstname || !Lastname || !dob || !password || !email) {
+        if (!UserName || !FirstName || !LastName || !BirthDate || !Password || !Email) {
             Alert.alert('คำเตือน', 'กรุณากรอกข้อมูลทุกช่อง');
             return;
         }
-    
-        if (!isValidDate(dob)) {
+
+        if (!isValidDate(BirthDate)) {
             Alert.alert('คำเตือน', 'กรุณากรอกวันเกิดในรูปแบบ วัน/เดือน/ปี (เช่น 31/12/2024)');
             return;
         }
-    
+
         try {
-            const response = await axios.post('https://sheet.best/api/sheets/37b85bb3-3767-4278-820f-fe368f0d46d1', {
-                Username,
-                Firstname,
-                Lastname,
-                dob,
-                password,
-                email
-            });
-    
-            if (response.status === 200) {
+
+            const response = await axios.post('http://172.28.159.77:8000/register', {
+            UserName,
+            Password,
+            FirstName,
+            LastName,
+            BirthDate,
+            Email
+        });
+
+            if (response.status === 201) {
                 Alert.alert('สำเร็จ', 'การลงทะเบียนเสร็จสมบูรณ์', [
                     { text: 'ตกลง', onPress: () => navigation.navigate('Login') }
                 ]);
+
             } else {
                 Alert.alert('ผิดพลาด', 'การลงทะเบียนล้มเหลว');
             }
         } catch (error) {
+            console.log(error);
             Alert.alert('ผิดพลาด', 'มีบางอย่างผิดพลาด');
         }
     };
-    
+
 
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
@@ -82,9 +86,9 @@ const Register = () => {
                     <StyledText className="text-blue-500 mb-1">ชื่อ</StyledText>
                     <StyledTextInput
                         className="p-3 bg-blue-100 rounded-lg"
-                        placeholder="Firstname"
+                        placeholder="FirstName"
                         placeholderTextColor="#999"
-                        value={Firstname}
+                        value={FirstName}
                         onChangeText={setFirstName}
                     />
                 </StyledView>
@@ -93,9 +97,9 @@ const Register = () => {
                     <StyledText className="text-blue-500 mb-1">นามสกุล</StyledText>
                     <StyledTextInput
                         className="p-3 bg-blue-100 rounded-lg"
-                        placeholder="Lastname"
+                        placeholder="LastName"
                         placeholderTextColor="#999"
-                        value={Lastname}
+                        value={LastName}
                         onChangeText={setLastName}
                     />
                 </StyledView>
@@ -106,8 +110,8 @@ const Register = () => {
                         className="p-3 bg-blue-100 rounded-lg"
                         placeholder="DD/MM/YYYY"
                         placeholderTextColor="#999"
-                        value={dob}
-                        onChangeText={setDob}
+                        value={BirthDate}
+                        onChangeText={setBirthDate}
                     />
                 </StyledView>
 
@@ -116,9 +120,9 @@ const Register = () => {
                     <StyledText className="text-blue-500 mb-1">ชื่อผู้ใช้</StyledText>
                     <StyledTextInput
                         className="p-3 bg-blue-100 rounded-lg"
-                        placeholder="Username"
+                        placeholder="UserName"
                         placeholderTextColor="#999"
-                        value={Username}
+                        value={UserName}
                         onChangeText={setUsername}
                     />
                 </StyledView>
@@ -130,7 +134,7 @@ const Register = () => {
                         placeholder="Password"
                         placeholderTextColor="#999"
                         secureTextEntry
-                        value={password}
+                        value={Password}
                         onChangeText={setPassword}
                     />
                 </StyledView>
@@ -141,7 +145,7 @@ const Register = () => {
                         className="p-3 bg-blue-100 rounded-lg"
                         placeholder="Email"
                         placeholderTextColor="#999"
-                        value={email}
+                        value={Email}
                         onChangeText={setEmail}
                     />
                 </StyledView>

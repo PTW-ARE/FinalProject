@@ -12,6 +12,7 @@ import BasicToC from './components/Unit_1';
 import Register from './components/Register';
 import Navbar from './components/NavbarMenu';
 
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -24,7 +25,7 @@ export default function App() {
     // <Navbar></Navbar>
     
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
         <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false }} />

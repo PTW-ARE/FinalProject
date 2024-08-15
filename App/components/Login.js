@@ -1,6 +1,6 @@
-import React , {useState} from 'react';
+import React, { useState } from 'react';
 import { withExpoSnack } from 'nativewind';
-import { Text, View, TextInput, TouchableOpacity,Alert } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { styled } from 'nativewind';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
@@ -11,38 +11,44 @@ const StyledTextInput = styled(TextInput);
 const StyledTouchableOpacity = styled(TouchableOpacity);
 
 
-const Login = ({}) => {
+const Login = ({ }) => {
 
   const [UserName, setUserName] = useState('');
   const [Password, setPassword] = useState('');
+  const [authToken, setAuthToken] = useState('');
+  const [authSignature, setAuthSignature] = useState(''); // เพิ่ม state สำหรับ auth_signature
 
   const navigation = useNavigation();
 
   const handleLogin = async () => {
+    if (!UserName || !Password) {
+      Alert.alert('คำเตือน', 'กรุณากรอก Username และ Password ให้ถูกต้อง');
+      
+      return;
+    }
+  
     try {
-      // เรียก API ด้วย axios
-      const response = await axios.post('http://172.28.159.77:8000/api/authen_request', {
-        UserName: UserName,
-        Password: Password,
+      const response = await axios.post('http://192.168.173.189:8000/login', {
+        UserName,
+        Password,
       });
-
-      // ตรวจสอบผลลัพธ์จาก API
+  
       if (response.data.result) {
-        // หากเข้าสู่ระบบสำเร็จ
+        setAuthToken(response.data.token);
         navigation.navigate('Menu');
-
       } else {
-        // หากเข้าสู่ระบบไม่สำเร็จ
-        Alert.alert('กรุณาลองใหม่', response.data.message);
+        setAuthToken('');
+        Alert.alert('Login Failed', response.data.message);
       }
     } catch (error) {
-      // จัดการข้อผิดพลาดที่เกิดขึ้น
-      console.error(error);
-      Alert.alert('คำเตือน', 'เกิดข้อผิดพลาด');
+      console.error('Login Error:', error);
+      setAuthToken('');
+      Alert.alert('คำเตือน', 'Username หรือ Password ไม่ถูกต้อง');
     }
   };
 
-  
+
+
 
   const handleRegister = () => {
     // นำทางไปยังหน้า Menu เมื่อเข้าสู่ระบบสำเร็จ
@@ -79,24 +85,24 @@ const Login = ({}) => {
       </StyledView>
 
       <StyledView className="flex-row gap-2 w-10/12 px-4 justify-center">
-            <StyledTouchableOpacity
-                className="w-2/6 p-2 bg-green-500 rounded-lg items-center"
-                onPress={handleLogin}
-            >
-                <StyledText className="text-white font-bold text-sm">
-                    Login
-                </StyledText>
-            </StyledTouchableOpacity>
+        <StyledTouchableOpacity
+          className="w-2/6 p-2 bg-green-500 rounded-lg items-center"
+          onPress={handleLogin}
+        >
+          <StyledText className="text-white font-bold text-sm">
+            Login
+          </StyledText>
+        </StyledTouchableOpacity>
 
-            <StyledTouchableOpacity
-                className="w-2/6 p-2 bg-green-500 rounded-lg items-center"
-                onPress={handleRegister}
-            >
-                <StyledText className="text-white font-bold text-sm">
-                    Register
-                </StyledText>
-            </StyledTouchableOpacity>
-        </StyledView>
+        <StyledTouchableOpacity
+          className="w-2/6 p-2 bg-green-500 rounded-lg items-center"
+          onPress={handleRegister}
+        >
+          <StyledText className="text-white font-bold text-sm">
+            Register
+          </StyledText>
+        </StyledTouchableOpacity>
+      </StyledView>
 
     </StyledView>
   );

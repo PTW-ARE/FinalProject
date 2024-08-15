@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { styled } from 'nativewind';
 import Navbar from './NavbarUnit';
+import axios from "axios";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledTouchableOpacity = styled(TouchableOpacity);
 
-const LessonScreen = ({ navigation }) => {
+const Unit_1 = ({ navigation }) => {
+
+    const [part, setPart] = useState([]);
+
+    useEffect(() => {
+        // ดึงข้อมูลจาก API
+        axios.get("http://192.168.173.189:8000/partName") // แทนที่ "your-folder" ด้วยโฟลเดอร์ที่คุณวางไฟล์ PHP
+            .then(response => {
+                setPart(response.data);
+            })
+            .catch(error => {
+                console.error("There was an error fetching the units!", error);
+            });
+    }, []);
     return (
         <StyledView className="flex-1 bg-gray-100">
 
@@ -15,6 +29,31 @@ const LessonScreen = ({ navigation }) => {
             <Navbar navigation={navigation} />
 
             <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 20 }}>
+
+                {/* <StyledView className="flex-1 bg-white flex-col items-center mt-5 py-7 mx-3 rounded-3xl">
+                    {part.map((part) => {
+                        
+                        if (part.PartID === 'P01') {
+                            return (
+                                <StyledText className="text-white text-xl font-bold text-center">
+                                    {part.PartName}
+                                </StyledText>);
+                        } else {
+                            
+                            return (
+                                <StyledTouchableOpacity
+                                    key={part.PartID}
+                                    className="bg-red-600 p-3 mb-4 w-3/4 rounded-full shadow-md"
+                                    onPress={() => alert("Error: Invalid PartID")}
+                                >
+                                    <StyledText className="text-white text-xl font-bold text-center">
+                                        Error: Invalid PartID
+                                    </StyledText>
+                                </StyledTouchableOpacity>
+                            );
+                        }
+                    })}
+                </StyledView> */}
 
                 <StyledView className='bg-yellow-500 mb-2 w-3/4 rounded-full'>
                     <StyledText className="text-2xl font-bold text-white p-2 text-center">
@@ -112,18 +151,25 @@ const LessonScreen = ({ navigation }) => {
                     </StyledText>
                 </StyledView>
 
+
                 <StyledView className="flex-row justify-end mt-3">
-                    
-                    <StyledTouchableOpacity className="bg-blue-500 p-3 rounded-full w-2/5 items-center">
+
+                    <StyledTouchableOpacity className="bg-blue-500 p-3 rounded-full w-2/5 items-center"
+                        onPress={() => {
+                            navigation.navigate('Unit_2');
+                        }}
+                    >
                         <StyledText className="text-white text-base font-bold">
                             บทต่อไป
                         </StyledText>
                     </StyledTouchableOpacity>
                 </StyledView>
 
+
+
             </ScrollView>
         </StyledView>
     );
 };
 
-export default LessonScreen;
+export default Unit_1;

@@ -10,101 +10,70 @@ const StyledTouchableOpacity = styled(TouchableOpacity);
 
 const Menu = ({ navigation }) => {
 
-    const [Unit, setUnit] = useState([]);
-    const [isLoading, setIsLoading] = useState()
+    const [units, setUnits] = useState([]);
 
     useEffect(() => {
-        // fetch('https://192.168.0.149:8000/api/getUnitName')
-        fetch('https://localhost: 8000/api/getUnitName')
-
-            .then(res => res.json())
-            .then((result) => {
-
-                setUnit(result)
-                console.log(result)
-
+        // ดึงข้อมูลจาก API
+        axios.get("http://192.168.173.189:8000/units") // แทนที่ "your-folder" ด้วยโฟลเดอร์ที่คุณวางไฟล์ PHP
+            .then(response => {
+                setUnits(response.data);
             })
-    }, [])
-
-    const renderItem = ({ Units }) => (
-        <StyledView>
-            <StyledText>{Unit.UnitName}</StyledText>
-        </StyledView>
-    )
+            .catch(error => {
+                console.error("There was an error fetching the units!", error);
+            });
+    }, []);
 
     return (
-        <StyledView className="flex-1 bg-white">
+        <StyledView className="flex-1 bg-white flex-col">
             <Navbar navigation={navigation} />
-            <ScrollView>
-                <StyledView>
 
-                    <FlatList
-                        data={Unit}
-                        renderItem={renderItem}
-                        keyExtractor={Unit => Unit.UnitID}
-                    />
-                </StyledView>
+            <StyledView className="ml-8 mt-5 mb-1">
+                <StyledText className="text-black text-2xl font-bold text-blue-700">
+                    บทเรียน
+                </StyledText>
+            </StyledView>
 
-                <StyledView className="flex-1 ml-8 mt-5">
-                    <StyledText className="text-black text-2xl font-bold text-blue-700">
-                        บทเรียน
+            <StyledText></StyledText>
+
+            <StyledView className="flex-1 bg-white flex-col  items-center mt-5 py-7 mx-3 rounded-3xl">
+                {units.map((unit) => (
+                    <StyledTouchableOpacity
+                        key={unit.UnitID}
+                        className="bg-blue-600 p-3 mb-4 w-3/4 rounded-full shadow-md"
+                        onPress={() => {
+                            if (unit.UnitID === 'U01') {
+                                navigation.navigate('Unit_1');
+                            } else if (unit.UnitID === 'U02') {
+                                navigation.navigate('Unit_2');
+                            } else if (unit.UnitID === 'U03') {
+                                navigation.navigate('');
+                            } else if (unit.UnitID === 'U04') {
+                                navigation.navigate('');
+                            } else if (unit.UnitID === 'U05') {
+                                navigation.navigate('');
+                            } else {
+                                navigation.navigate('Unit_Default', { unitId: unit.UnitID });
+                            }
+                        }}
+                    >
+                        <StyledText className="text-white text-xl font-bold text-center">
+                            {unit.UnitName}
+                        </StyledText>
+                    </StyledTouchableOpacity>
+                ))}
+            </StyledView>
+
+            {/* <StyledView className="flex-1 bg-white flex-col  items-center mt-5 py-7 mx-3 rounded-3xl">
+                <StyledTouchableOpacity
+                    className="bg-blue-600 p-3 mb-4 w-3/4 rounded-full shadow-md"
+                    onPress={() => navigation.navigate('Unit_1')}
+                >
+                    <StyledText className="text-white text-xl font-bold text-center">
+                        {units.UnitName}
                     </StyledText>
-                </StyledView>
+                </StyledTouchableOpacity>
+            </StyledView> */}
 
-                <StyledView className="flex-1 bg-white flex-col justify-center items-center mt-5 py-7 mx-3 rounded-3xl">
-
-                    <FlatList
-                        data={Unit}
-                        renderItem={renderItem}
-                        keyExtractor={Unit => Unit.UnitID}
-                    />
-                    {/* <StyledTouchableOpacity 
-                        className="bg-blue-600 p-3 mb-4 w-3/4 rounded-full shadow-md"
-                        onPress={() => navigation.navigate('dsds')}
-                    >
-                        <StyledText className="text-white text-xl font-bold text-center">
-                            แบบทดสอบก่อนเรียน
-                        </StyledText>
-                    </StyledTouchableOpacity> */}
-
-                    <StyledTouchableOpacity
-                        className="bg-blue-600 p-3 mb-4 w-3/4 rounded-full shadow-md"
-                        onPress={() => navigation.navigate('BasicToC')}
-                    >
-                        <StyledText className="text-white text-xl font-bold text-center">
-                            ทำความรู้จักกับภาษา C
-                        </StyledText>
-                    </StyledTouchableOpacity>
-
-                    <StyledTouchableOpacity
-                        className="bg-blue-600 p-3 mb-4 w-3/4 rounded-full shadow-md"
-                    // onPress={() => navigation.navigate('')}
-                    >
-                        <StyledText className="text-white text-xl font-bold text-center">
-                            Syntax
-                        </StyledText>
-                    </StyledTouchableOpacity>
-
-                    <StyledTouchableOpacity
-                        className="bg-blue-600 p-3 mb-4 w-3/4 rounded-full shadow-md"
-                    // onPress={() => navigation.navigate('')}
-                    >
-                        <StyledText className="text-white text-xl font-bold text-center">
-                            Output
-                        </StyledText>
-                    </StyledTouchableOpacity>
-
-                    <StyledTouchableOpacity
-                        className="bg-blue-600 p-3 mb-4 w-3/4 rounded-full shadow-md"
-                    // onPress={() => navigation.navigate('')}
-                    >
-                        <StyledText className="text-white text-xl font-bold text-center">
-                            Comment
-                        </StyledText>
-                    </StyledTouchableOpacity>
-
-                </StyledView>
-            </ScrollView>
         </StyledView>
     );
 };

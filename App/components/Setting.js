@@ -25,7 +25,9 @@ const Setting = ({ navigation }) => {
                         </StyledText>
                     </StyledTouchableOpacity>
 
-                    <StyledTouchableOpacity className="bg-red-500 py-3 px-8 rounded-full mb-4">
+                    <StyledTouchableOpacity className="bg-red-500 py-3 px-8 rounded-full mb-4"
+                        onPress={() => navigation.navigate('Login')}
+                    >
                         <StyledText className="text-white text-xl font-semibold text-center">
                             ออกจากระบบ
                         </StyledText>

@@ -27,7 +27,7 @@ export default function App() {
     // <Navbar></Navbar>
     
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Unit_1">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
         <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false }} />

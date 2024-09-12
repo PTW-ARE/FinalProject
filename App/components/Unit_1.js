@@ -14,7 +14,7 @@ const Unit_1 = ({ navigation }) => {
 
     useEffect(() => {
         // ดึงข้อมูลจาก API
-        axios.get("http://192.168.173.189:8000/partName") // แทนที่ "your-folder" ด้วยโฟลเดอร์ที่คุณวางไฟล์ PHP
+        axios.get("http://172.28.156.125:8000/partName") // แทนที่ "your-folder" ด้วยโฟลเดอร์ที่คุณวางไฟล์ PHP
             .then(response => {
                 setPart(response.data);
             })

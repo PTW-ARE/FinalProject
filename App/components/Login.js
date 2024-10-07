@@ -23,22 +23,22 @@ const Login = ({ }) => {
   const handleLogin = async () => {
     if (!UserName || !Password) {
       Alert.alert('คำเตือน', 'กรุณากรอก Username และ Password ให้ถูกต้อง');
-      
       return;
     }
-  
+
     try {
       const response = await axios.post('http://192.168.0.149:8081/login', {
         UserName,
         Password,
       });
-  
+
+      console.log(response.data); // ตรวจสอบ response ที่ได้จากเซิร์ฟเวอร์
+
       if (response.data.result) {
         setAuthToken(response.data.token);
         navigation.navigate('Menu');
       } else {
-        setAuthToken('');
-        Alert.alert('Login Failed', response.data.message);
+        Alert.alert('Login Failed', response.data.message || 'Unknown error'); // ป้องกันการแสดงข้อความ undefined
       }
     } catch (error) {
       console.error('Login Error:', error);

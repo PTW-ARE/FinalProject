@@ -10,50 +10,15 @@ const StyledTouchableOpacity = styled(TouchableOpacity);
 
 const Unit_1 = ({ navigation }) => {
 
-    const [part, setPart] = useState([]);
 
-    useEffect(() => {
-        // ดึงข้อมูลจาก API
-        axios.get("http://192.168.0.149:8081/partName") // แทนที่ "your-folder" ด้วยโฟลเดอร์ที่คุณวางไฟล์ PHP
-            .then(response => {
-                setPart(response.data);
-            })
-            .catch(error => {
-                console.error("There was an error fetching the units!", error);
-            });
-    }, []);
     return (
         <StyledView className="flex-1 bg-gray-100">
 
-            {/* Navbar ต้องแก้ในหน้านี้ */}
+    
             <Navbar navigation={navigation} />
 
             <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 20 }}>
 
-                {/* <StyledView className="flex-1 bg-white flex-col items-center mt-5 py-7 mx-3 rounded-3xl">
-                    {part.map((part) => {
-                        
-                        if (part.PartID === 'P01') {
-                            return (
-                                <StyledText className="text-white text-xl font-bold text-center">
-                                    {part.PartName}
-                                </StyledText>);
-                        } else {
-                            
-                            return (
-                                <StyledTouchableOpacity
-                                    key={part.PartID}
-                                    className="bg-red-600 p-3 mb-4 w-3/4 rounded-full shadow-md"
-                                    onPress={() => alert("Error: Invalid PartID")}
-                                >
-                                    <StyledText className="text-white text-xl font-bold text-center">
-                                        Error: Invalid PartID
-                                    </StyledText>
-                                </StyledTouchableOpacity>
-                            );
-                        }
-                    })}
-                </StyledView> */}
 
                 <StyledView className='bg-yellow-500 mb-2 w-3/4 rounded-full'>
                     <StyledText className="text-2xl font-bold text-white p-2 text-center">
@@ -63,7 +28,6 @@ const Unit_1 = ({ navigation }) => {
 
                 <StyledView className="mb-4 p-4 bg-yellow-100 rounded-3xl shadow-sm">
 
-                    {/* คอยกำกับโดย useEffect ภายหลังเอา ** ต้องแก้! */}
                     <StyledText className="text-base text-gray-800">
                         C - Programming Language หรือ ภาษาซี
                         คือ ภาษาที่ใช้สำหรับพัฒนาโปรแกรมทั่วไป เพราะมีความ
@@ -85,7 +49,6 @@ const Unit_1 = ({ navigation }) => {
 
                 <StyledView className="mb-4 p-5 bg-yellow-100 rounded-3xl shadow-sm">
 
-                    {/* คอยกำกับโดย useEffect ภายหลังเอา ** ต้องแก้! */}
                     <StyledText className="text-base text-gray-800">
                         • เป็นหนึ่งในภาษาโปรแกรมที่ได้รับความนิยมมากที่สุดในโลก
                     </StyledText>
@@ -106,7 +69,6 @@ const Unit_1 = ({ navigation }) => {
 
                     <StyledView className="bg-gray-200 p-4 rounded-lg mb-2">
 
-                        {/* คอยกำกับโดย useEffect ภายหลังเอา ** ต้องแก้! */}
                         <StyledText className="text-base text-gray-800">
                             #include &lt;stdio.h&gt;{'\n'}
                             int main() {'{'}{'\n'}

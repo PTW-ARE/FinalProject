@@ -70,6 +70,7 @@ app.post("/login", (req, res) => {
                 });
             }
 
+
             if (results.length > 0) {
                 // สร้าง token
                 const token = jwt.sign({ UserName }, "MySecretKey", { expiresIn: '1h' });
@@ -78,11 +79,13 @@ app.post("/login", (req, res) => {
                     message: "เข้าสู่ระบบสำเร็จ",
                     token,
                 });
+
             } else {
                 return res.status(401).json({
                     result: false,
                     message: "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง",
                 });
+
             }
         }
     );

@@ -10,112 +10,79 @@ const StyledTouchableOpacity = styled(TouchableOpacity);
 
 const Unit_1 = ({ navigation }) => {
 
+    const { PartID } = route.params; // รับ PartID จาก params
+    const [partData, setPartData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        if (PartID) {
+            // ดึงข้อมูลจาก API โดยใช้ PartID
+            axios.get(`http://your-server-url/part/${PartID}`)
+                .then(response => {
+                    setPartData(response.data);
+                    setLoading(false);
+                })
+                .catch(error => {
+                    console.error("Error fetching part data: ", error);
+                    setError("ไม่สามารถดึงข้อมูลได้");
+                    setLoading(false);
+                });
+        }
+    }, [PartID]);
+
+    if (loading) {
+        return <StyledView className="flex-1 justify-center items-center"><ActivityIndicator size="large" color="#0000ff" /></StyledView>;
+    }
+
+    if (error) {
+        return <StyledView className="flex-1 justify-center items-center"><StyledText>{error}</StyledText></StyledView>;
+    }
 
     return (
         <StyledView className="flex-1 bg-gray-100">
-
-    
             <Navbar navigation={navigation} />
 
             <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 20 }}>
-
-
                 <StyledView className='bg-yellow-500 mb-2 w-3/4 rounded-full'>
                     <StyledText className="text-2xl font-bold text-white p-2 text-center">
-                        ภาษา C คืออะไร ?
+                        {partData?.PartName} {/* แสดงชื่อ Part */}
                     </StyledText>
                 </StyledView>
 
                 <StyledView className="mb-4 p-4 bg-yellow-100 rounded-3xl shadow-sm">
-
                     <StyledText className="text-base text-gray-800">
-                        C - Programming Language หรือ ภาษาซี
-                        คือ ภาษาที่ใช้สำหรับพัฒนาโปรแกรมทั่วไป เพราะมีความ
-                        ยืดหยุ่นสูง ออกแบบมาให้สามารถทำงานกับคำสั่งพื้น
-                        ฐานของคอมพิวเตอร์ได้อย่างมีประสิทธิภาพ
-
-                        ภาษาซีพัฒนาขึ้นระหว่าง ค.ศ. 1969 - 1973 โดย Dennis Rittchie ค่อย ๆ เป็นที่นิยมขึ้นจนเริ่มใช้กัน
-                        อย่างแพร่หลาย จนกระทั้งปี ค.ศ.1989 มีการกำหนด
-                        มาตรฐานของภาษาซีเรียกว่า “ANSI C” ขึ้น และใช้เป็น
-                        มาตรฐานในการพัฒนาภาษาคอมพิวเตอร์รุ่นใหม่ ๆ ต่อไป
+                        {partData?.Description} {/* แสดงรายละเอียด */}
                     </StyledText>
                 </StyledView>
 
+                {/* เพิ่มข้อมูลที่ต้องการแสดงจาก partData */}
+                {/* สมมติว่า partData มีฟิลด์ที่เรียกว่า 'Importance', 'Examples', 'Steps' */}
                 <StyledView className='bg-yellow-500 mb-2 w-10/12 rounded-full'>
                     <StyledText className="text-2xl font-bold text-white p-2 text-center">
-                        ทำไมภาษา C ถึงสำคัญ
+                        ความสำคัญ
                     </StyledText>
                 </StyledView>
 
                 <StyledView className="mb-4 p-5 bg-yellow-100 rounded-3xl shadow-sm">
-
                     <StyledText className="text-base text-gray-800">
-                        • เป็นหนึ่งในภาษาโปรแกรมที่ได้รับความนิยมมากที่สุดในโลก
+                        {partData?.Importance}
                     </StyledText>
-                    <StyledText className="text-base text-gray-800">
-                        • เป็นพื้นฐานไปสู่ภาษาโปรแกรมอื่นๆ เช่น Java , Python , C++ เป็นต้น
-                    </StyledText>
-                    <StyledText className="text-base text-gray-800">
-                        • ภาษา C สามารถใช้ในการพัฒนาแอปพลิเคชั่น
-                        และเทคโนโลยีต่างๆอีกมากมาย
-                    </StyledText>
-
-                </StyledView>
-
-                <StyledView className="mb-4 p-4 bg-blue-100 rounded-lg shadow-sm">
-                    <StyledText className="text-lg font-bold text-blue-700 mb-2">
-                        ตัวอย่างโค้ด
-                    </StyledText>
-
-                    <StyledView className="bg-gray-200 p-4 rounded-lg mb-2">
-
-                        <StyledText className="text-base text-gray-800">
-                            #include &lt;stdio.h&gt;{'\n'}
-                            int main() {'{'}{'\n'}
-                            {'  '}printf("Hello World!");{'\n'}
-                            {'  '}return 0;{'\n'}
-                            {'}'}
-                        </StyledText>
-                    </StyledView>
-
-                    <StyledView className="bg-gray-100 p-4 rounded-lg">
-                        <StyledText className="text-base text-gray-800">
-                            ผลลัพธ์: Hello World!
-                        </StyledText>
-                    </StyledView>
-
-                    <StyledTouchableOpacity className="mt-4 bg-blue-500 p-3 rounded-full items-center">
-                        <StyledText className="text-white text-base font-bold">
-                            ลองรัน
-                        </StyledText>
-                    </StyledTouchableOpacity>
                 </StyledView>
 
                 <StyledView className='bg-blue-500 mb-2 w-3/4 rounded-full'>
                     <StyledText className="text-2xl font-bold text-white p-2 text-center">
-                        ขั้นตอนการทำงาน
+                        ตัวอย่าง
                     </StyledText>
                 </StyledView>
 
-                <StyledView className="mb-4 p-4 bg-yellow-100 rounded-lg shadow-sm">
-
-                    <StyledText className="text-base text-gray-800 mb-2">
-                        1. Source code คือ เขียน C Code ขึ้นเพื่อสั่งงาน
-                    </StyledText>
-                    <StyledText className="text-base text-gray-800 mb-2">
-                        2. Compile คือ นำ C Code มาแปลเป็นภาษาเครื่อง
-                    </StyledText>
-                    <StyledText className="text-base text-gray-800 mb-2">
-                        3. Link คือ นำโค้ดโปรแกรมจากหลายๆ ไฟล์มารวมกัน
-                    </StyledText>
+                <StyledView className="mb-4 p-4 bg-blue-100 rounded-lg shadow-sm">
                     <StyledText className="text-base text-gray-800">
-                        4. Run คือ ประมวลผลโปรแกรมที่เขียน
+                        {partData?.Examples}
                     </StyledText>
                 </StyledView>
-
 
                 <StyledView className="flex-row justify-end mt-3">
-
                     <StyledTouchableOpacity className="bg-blue-500 p-3 rounded-full w-2/5 items-center"
                         onPress={() => {
                             navigation.navigate('Unit_2');
@@ -126,9 +93,6 @@ const Unit_1 = ({ navigation }) => {
                         </StyledText>
                     </StyledTouchableOpacity>
                 </StyledView>
-
-
-
             </ScrollView>
         </StyledView>
     );

@@ -25,16 +25,7 @@ var pool = mysql.createPool({
 
 });
 
-// pool.connect(err => {
-//     if (err) {
-//         return console.error('error connecting: ' + err.stack);
-//     }
-//     console.log('connected as id ' + pull.threadId);
-// });
 
-app.get('/', (req, res) => {
-    res.send('hello world');
-});
 
 app.get('/units', (req, res) => {
     pool.query('SELECT UnitID, UnitName FROM unit', (error, results) => {
@@ -44,6 +35,16 @@ app.get('/units', (req, res) => {
         res.json(results);
     });
 });
+
+app.get('/parts', (req, res) => {
+    pool.query('SELECT * FROM part', (error, results) => {
+        if (error) {
+            return res.status(500).json({ error });
+        }
+        res.json(results);
+    });
+});
+
 
 
 
@@ -138,37 +139,6 @@ app.post("/register", (req, res) => {
     });
 });
 
-
-
-
-//ป้องกันไม่ให้ดึงข้อมูลไปใช้
-// let checkAuth = (req, res, next) => {
-//     let token = null;
-
-//     if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
-//         token = req.headers.authorization.split(' ')[1];
-//     } else if (req.query && req.query.token) {
-//         token = req.query.token;
-//     } else {
-//         token = req.body.token;
-//     }
-
-//     if (token) {
-//         jwt.verify(token, "MySecretKey", (err, decoded) => {
-//             if (error) {
-//                 res.send(JSON.stringtify({
-//                     result: false,
-//                     message: "ไม่ได้เข้าสู่ระบบ"
-//                 }));
-//             } else {
-//                 req.decoded = decoded;
-//                 next();
-//             }
-//         });
-//     } else {
-//         res.status(401).send("Not authorized");
-//     }
-// }
 
 app.listen(8000, () =>
     console.log(`Example app Listening on port ${port}`)

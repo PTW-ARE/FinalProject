@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { styled } from 'nativewind';
-import Navbar from './Unit_01/NavbarUnit_01';
+import Navbar from '../Unit_01/NavbarUnit_01';
 import axios from "axios";
 
 const StyledView = styled(View);

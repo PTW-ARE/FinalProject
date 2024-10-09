@@ -27,7 +27,7 @@ const Menu = ({ navigation }) => {
         <StyledView className="flex-1 bg-white flex-col">
             <Navbar navigation={navigation} />
 
-            <StyledView className="ml-8 mt-5 mb-1">
+            <StyledView className="ml-8 mt-10 mb-1">
                 <StyledText className="text-black text-2xl font-bold text-blue-700">
                     บทเรียน
                 </StyledText>
@@ -35,7 +35,7 @@ const Menu = ({ navigation }) => {
 
             <StyledText></StyledText>
 
-            <StyledView className="flex-1 bg-white flex-col  items-center mt-5 py-7 mx-3 rounded-3xl">
+            <StyledView className="flex-1 bg-white flex-col  items-center mt-1 py-7 mx-3 rounded-3xl">
                 {units.map((unit) => (
                     <StyledTouchableOpacity
                         key={unit.UnitID}

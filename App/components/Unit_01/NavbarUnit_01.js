@@ -3,6 +3,7 @@ import { styled } from 'nativewind';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -11,6 +12,13 @@ const StyledImage = styled(Image);
 
 const NavbarUnit_01 = ({ navigation = useNavigation() }) => {
 
+
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    {label: 'Apple', value: 'apple'},
+    {label: 'Banana', value: 'banana'}
+  ]);
 
   const [units, setUnits] = useState([]);
 
@@ -26,7 +34,7 @@ const NavbarUnit_01 = ({ navigation = useNavigation() }) => {
   }, []);
 
   return (
-    /// bg-กำหนดภายหลัง 
+    /// bg-กำหนดภายหลัง
     <StyledView className="bg-blue-700 p-4 rounded-b-3xl flex-row justify-between pt-8">
 
       <StyledView></StyledView>
@@ -39,10 +47,19 @@ const NavbarUnit_01 = ({ navigation = useNavigation() }) => {
             </StyledText>
           ))}
       </StyledView>
-      <StyledTouchableOpacity onPress={() => navigation.navigate('Menu')} className={"pt-3"}>
+      <StyledTouchableOpacity onPress={() => navigation.navigate('BergerNav')} className={"pt-3"}>
         <StyledImage source={require('../Unit_01/asset/BergerMenu.png')} className="w-5 h-5"></StyledImage>
       </StyledTouchableOpacity>
 
+
+      <DropDownPicker
+      open={open}
+      value={value}
+      items={items}
+      setOpen={setOpen}
+      setValue={setValue}
+      setItems={setItems}
+    />
 
     </StyledView>
   );

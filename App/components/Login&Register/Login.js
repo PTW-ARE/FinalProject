@@ -39,7 +39,6 @@ const Login = ({ }) => {
         Alert.alert('Login Failed', response.data.message || 'Unknown error'); // ป้องกันการแสดงข้อความ undefined
       }
     } catch (error) {
-      console.error('Login Error:', error);
       setAuthToken('');
       Alert.alert('คำเตือน', 'Username หรือ Password ไม่ถูกต้อง');
     }

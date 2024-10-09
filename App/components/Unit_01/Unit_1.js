@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { styled } from 'nativewind';
-import Navbar from './NavbarUnit_01';
+import NavbarUnit_01 from './NavbarUnit_01';
 import axios from "axios";
+import BergerNav from './BergerNav';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -27,7 +28,7 @@ const Unit_1 = ({ navigation }) => {
     return (
         <StyledView className="flex-1 bg-gray-100">
 
-            <Navbar navigation={navigation} />
+            <NavbarUnit_01 navigation={navigation} />
 
             <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 20 }}>
 

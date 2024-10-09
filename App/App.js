@@ -6,13 +6,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from "./components/HOME/Home";
 import Menu from "./components/Menu/Menu";
 import Login from './components/Login&Register/Login';
-import Setting from './components/Setting/Setting';
-
-import BasicToC from './components/Unit_01/Unit_1';
 import Register from './components/Login&Register/Register';
-import Navbar from './components/Menu/NavbarMenu';
+import Setting from './components/Setting/Setting';
 import Unit_1 from './components/Unit_01/Unit_1';
-import Unit_2 from './components/Unit_2';
+import Unit_2 from './components/Unit_02/Unit_2';
+import BergerNav from './components/Unit_01/BergerNav';
+import NavbarUnit_01 from './components/Unit_01/BergerNav';
 
 
 const Stack = createNativeStackNavigator();
@@ -27,7 +26,7 @@ export default function App() {
     // <Navbar></Navbar>
     
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Unit_1">
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
         <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false }} />
@@ -35,6 +34,8 @@ export default function App() {
         <Stack.Screen name="Unit_1" component={Unit_1} options={{ headerShown: false }} />
         <Stack.Screen name="Unit_2" component={Unit_2} options={{ headerShown: false }} />
         <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
+        <Stack.Screen name="BergerNav" component={BergerNav} options={{ headerShown: false }} />
+        <Stack.Screen name="NavbarUnit_01" component={NavbarUnit_01} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
 

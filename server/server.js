@@ -36,7 +36,8 @@ app.get('/units', (req, res) => {
     });
 });
 
-app.get('/parts', (req, res) => {
+
+app.get('/part', (req, res) => {
     pool.query('SELECT * FROM part', (error, results) => {
         if (error) {
             return res.status(500).json({ error });
@@ -44,7 +45,6 @@ app.get('/parts', (req, res) => {
         res.json(results);
     });
 });
-
 
 
 

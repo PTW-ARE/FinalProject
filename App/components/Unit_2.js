@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { styled } from 'nativewind';
-import Navbar from './NavbarUnit';
+import Navbar from './Unit_01/NavbarUnit_01';
 import axios from "axios";
 
 const StyledView = styled(View);
@@ -10,18 +10,6 @@ const StyledTouchableOpacity = styled(TouchableOpacity);
 
 const Unit_1 = ({ navigation }) => {
 
-    const [part, setPart] = useState([]);
-
-    useEffect(() => {
-        // ดึงข้อมูลจาก API
-        axios.get("http://192.168.0.149:8081/partName") // แทนที่ "your-folder" ด้วยโฟลเดอร์ที่คุณวางไฟล์ PHP
-            .then(response => {
-                setPart(response.data);
-            })
-            .catch(error => {
-                console.error("There was an error fetching the units!", error);
-            });
-    }, []);
     return (
         <StyledView className="flex-1 bg-gray-100">
 
@@ -29,31 +17,6 @@ const Unit_1 = ({ navigation }) => {
             <Navbar navigation={navigation} />
 
             <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 20 }}>
-
-                {/* <StyledView className="flex-1 bg-white flex-col items-center mt-5 py-7 mx-3 rounded-3xl">
-                    {part.map((part) => {
-                        
-                        if (part.PartID === 'P01') {
-                            return (
-                                <StyledText className="text-white text-xl font-bold text-center">
-                                    {part.PartName}
-                                </StyledText>);
-                        } else {
-                            
-                            return (
-                                <StyledTouchableOpacity
-                                    key={part.PartID}
-                                    className="bg-red-600 p-3 mb-4 w-3/4 rounded-full shadow-md"
-                                    onPress={() => alert("Error: Invalid PartID")}
-                                >
-                                    <StyledText className="text-white text-xl font-bold text-center">
-                                        Error: Invalid PartID
-                                    </StyledText>
-                                </StyledTouchableOpacity>
-                            );
-                        }
-                    })}
-                </StyledView> */}
 
                 <StyledView className='bg-yellow-500 mb-2 w-3/4 rounded-full'>
                     <StyledText className="text-2xl font-bold text-white p-2 text-center">

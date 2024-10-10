@@ -30,11 +30,46 @@ const Unit_2 = ({ navigation }) => {
 
             <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 20 }}>
 
-                <StyledView className='mb-2 w-3/4 rounded-full'>
-                    <StyledText className="text-2xl font-bold text-black p-2 text-left">
-                        Syntax(ไวยากรณ์)
+                <StyledView className='rounded-full'>
+                {parts
+                    .filter((part) => part.PartID === 'P05')
+                    .map((part) => (
+                    <StyledText key={part.PartID} className="text-2xl font-bold text-black p-2 text-left">
+                        {part.PartName}
                     </StyledText>
+                    ))}
                 </StyledView>
+                
+                <StyledView className="mb-4 p-4 bg-yellow-100 rounded-3xl shadow-sm">
+                {parts
+                    .filter((part) => part.PartID === 'P05')
+                    .map((part) => (
+                    <StyledText key={part.PartID} className="text-base text-gray-800">
+                        {part.ContentPart}
+                    </StyledText>
+                    ))}
+                </StyledView>
+
+                <StyledView className='rounded-full'>
+                {parts
+                    .filter((part) => part.PartID === 'P06')
+                    .map((part) => (
+                    <StyledText key={part.PartID} className="text-2xl font-bold text-black p-2 text-left">
+                        {part.PartName}
+                    </StyledText>
+                    ))}
+                </StyledView>
+
+                <StyledView className="mb-4 p-4 bg-yellow-100 rounded-3xl shadow-sm">
+                {parts
+                    .filter((part) => part.PartID === 'P06')
+                    .map((part) => (
+                    <StyledText key={part.PartID} className="text-base text-gray-800">
+                        {part.ContentPart}
+                    </StyledText>
+                    ))}
+                </StyledView>
+                
 
                 <StyledView className="mb-4 p-4 bg-blue-100 rounded-lg shadow-sm">
                     <StyledText className="text-lg font-bold text-blue-700 mb-2">
@@ -43,28 +78,25 @@ const Unit_2 = ({ navigation }) => {
 
                     <StyledView className="bg-gray-100 p-4 rounded-lg mb-2">
                     {parts
-                    .filter((part) => part.PartID === 'P04')
+                    .filter((part) => part.PartID === 'P06')
                     .map((part) => (
                         <StyledText key={part.PartID} className="text-base text-gray-800">
                             {part.RuncodeContent}
                         </StyledText>
                         ))}
                     </StyledView>
-                </StyledView>
-                
-                <StyledView className='bg-green-200 mb-2 w-10/12 rounded-full'>
-                {parts
-                    .filter((part) => part.PartID === 'P04')
-                    .map((part) => (
-                        <StyledText key={part.PartID} className="text-xl font-bold text-black p-2 text-center">
-                            {part.PartName}
+
+                    <StyledTouchableOpacity className="mt-4 bg-blue-500 p-3 rounded-full items-center">
+                        <StyledText className="text-white text-base font-bold">
+                            ลองรัน
                         </StyledText>
-                    ))}
+                    </StyledTouchableOpacity>
+                    
                 </StyledView>
                 
                 <StyledView className="mb-4 p-4 bg-yellow-100 rounded-3xl shadow-sm">
                 {parts
-                    .filter((part) => part.PartID === 'P04')
+                    .filter((part) => part.PartID === 'P07')
                     .map((part) => (
                     <StyledText key={part.PartID} className="text-base text-gray-800">
                         {part.ContentPart}
@@ -79,7 +111,7 @@ const Unit_2 = ({ navigation }) => {
 
                     <StyledView className="bg-gray-100 p-4 rounded-lg mb-2">
                     {parts
-                    .filter((part) => part.PartID === 'P04')
+                    .filter((part) => part.PartID === 'P06')
                     .map((part) => (
                         <StyledText key={part.PartID} className="text-base text-gray-800">
                             {part.ResultRuncode}
@@ -96,7 +128,7 @@ const Unit_2 = ({ navigation }) => {
                         }}
                     >
                         <StyledText className="text-white text-base font-bold">
-                            หน้าต่อไป
+                            บทต่อไป
                         </StyledText>
                     </StyledTouchableOpacity>
                 </StyledView>

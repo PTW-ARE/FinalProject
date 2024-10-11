@@ -13,7 +13,7 @@ const Unit_5 = ({ navigation }) => {
 
     useEffect(() => {
         // ดึงข้อมูลจาก API
-        axios.get("http://192.168.0.149:8000/part")
+        axios.get("http://192.168.28.189:8000/part")
             .then((response) => {
                 setParts(response.data);
             })
@@ -60,7 +60,7 @@ const Unit_5 = ({ navigation }) => {
                         ))}
                 </StyledView>
 
-                <StyledView className="mb-4 p-4 bg-yellow-100 rounded-3xl shadow-sm">
+                <StyledView className="mb-4 p-4 bg-blue-200 rounded-3xl shadow-sm">
                     
                     <StyledText className="text-lg font-bold text-black mb-2 mt-2">
                         ตัวอย่างโค้ด
@@ -85,6 +85,26 @@ const Unit_5 = ({ navigation }) => {
                                 </StyledText>
                             ))}
                     </StyledView>
+
+                    <StyledTouchableOpacity className="mt-4 bg-blue-500 p-3 rounded-full items-center">
+                        <StyledText className="text-white text-base font-bold">
+                            ลองรัน
+                        </StyledText>
+                    </StyledTouchableOpacity>
+
+                </StyledView>
+
+                <StyledView className="flex-row justify-end mt-3">
+
+                    <StyledTouchableOpacity className="bg-blue-500 p-3 rounded-full w-2/5 items-center"
+                        onPress={() => {
+                            navigation.navigate('Unit_5_5');
+                        }}
+                    >
+                        <StyledText className="text-white text-base font-bold">
+                            บทต่อไป
+                        </StyledText>
+                    </StyledTouchableOpacity>
                 </StyledView>
 
             </ScrollView>

@@ -16,6 +16,7 @@ import NavbarUnit_01 from './components/Unit_01/BergerNav';
 import Unit_3 from './components/Unit_03/Unit_3';
 import Unit_3_2 from './components/Unit_03/Unit_3_2';
 import Unit_4 from './components/Unit_04/Unit_4';
+import Unit_5 from './components/Unit_05/Unit_5';
 
 
 const Stack = createNativeStackNavigator();
@@ -30,7 +31,7 @@ export default function App() {
     // <Navbar></Navbar>
     
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Unit_3_2">
+      <Stack.Navigator initialRouteName="Unit_5">
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
         <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false }} />
@@ -44,6 +45,7 @@ export default function App() {
         <Stack.Screen name="Unit_3" component={Unit_3} options={{ headerShown: false }} />
         <Stack.Screen name="Unit_3_2" component={Unit_3_2} options={{ headerShown: false }} />
         <Stack.Screen name="Unit_4" component={Unit_4} options={{ headerShown: false }} />
+        <Stack.Screen name="Unit_5" component={Unit_5} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
 

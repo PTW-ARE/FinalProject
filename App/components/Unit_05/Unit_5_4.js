@@ -8,7 +8,7 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledTouchableOpacity = styled(TouchableOpacity);
 
-const Unit_5_2 = ({ navigation }) => {
+const Unit_5_4 = ({ navigation }) => {
     const [parts, setParts] = useState([]);
 
     useEffect(() => {
@@ -30,9 +30,9 @@ const Unit_5_2 = ({ navigation }) => {
 
             <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 20 }}>
 
-                <StyledView className=' w-3/4 rounded-full'>
+                <StyledView className=' w-auto rounded-full'>
                     {parts
-                        .filter((part) => part.PartID === 'P18')
+                        .filter((part) => part.PartID === 'P24')
                         .map((part) => (
                             <StyledText key={part.PartID} className="text-2xl font-bold text-black p-2 text-left">
                                 {part.PartName}
@@ -40,30 +40,10 @@ const Unit_5_2 = ({ navigation }) => {
                         ))}
                 </StyledView>
 
-                <StyledView className="mb-4 p-4 bg-yellow-100 rounded-3xl shadow-sm">
-                    {parts
-                        .filter((part) => part.PartID === 'P18')
-                        .map((part) => (
-                            <StyledText key={part.PartID} className="text-base text-gray-800">
-                                {part.ContentPart}
-                            </StyledText>
-                        ))}
-                </StyledView>
-
-                <StyledView className=' w-3/4 rounded-full'>
-                    {parts
-                        .filter((part) => part.PartID === 'P19')
-                        .map((part) => (
-                            <StyledText key={part.PartID} className="text-2xl font-bold text-black p-2 text-left">
-                                {part.PartName}
-                            </StyledText>
-                        ))}
-                </StyledView>
-
-                <StyledView className="mb-4 p-4 bg-yellow-100 rounded-3xl shadow-sm">
+                <StyledView className="mb-4 p-4 bg-blue-200 rounded-3xl shadow-sm">
                     <StyledView>
                         {parts
-                            .filter((part) => part.PartID === 'P19')
+                            .filter((part) => part.PartID === 'P24')
                             .map((part) => (
                                 <StyledText key={part.PartID} className="text-base text-gray-800">
                                     {part.ContentPart}
@@ -72,12 +52,12 @@ const Unit_5_2 = ({ navigation }) => {
                     </StyledView>
 
                     <StyledText className="text-lg font-bold text-black mb-2 mt-2">
-                        ตัวอย่างโค้ด
+                        ตัวอย่าง
                     </StyledText>
 
                     <StyledView className="bg-gray-100 p-4 rounded-lg mb-2">
                         {parts
-                            .filter((part) => part.PartID === 'P19')
+                            .filter((part) => part.PartID === 'P24')
                             .map((part) => (
                                 <StyledText key={part.PartID} className="text-base text-gray-800 ">
                                     {part.Example}
@@ -91,7 +71,7 @@ const Unit_5_2 = ({ navigation }) => {
 
                     <StyledView className="bg-gray-100 p-4 rounded-lg mb-2">
                         {parts
-                            .filter((part) => part.PartID === 'P19')
+                            .filter((part) => part.PartID === 'P24')
                             .map((part) => (
                                 <StyledText key={part.PartID} className="text-base text-gray-800">
                                     {part.ResultRuncode}
@@ -99,48 +79,16 @@ const Unit_5_2 = ({ navigation }) => {
                             ))}
                     </StyledView>
 
-                    <StyledTouchableOpacity className=" bg-blue-500 p-3 rounded-full items-center">
+                    <StyledTouchableOpacity className="mt-4 bg-blue-500 p-3 rounded-full items-center">
                         <StyledText className="text-white text-base font-bold">
                             ลองรัน
                         </StyledText>
                     </StyledTouchableOpacity>
                 </StyledView>
 
-                <StyledView className=' w-3/4 rounded-full'>
+                <StyledView className=' w-auto rounded-full'>
                     {parts
-                        .filter((part) => part.PartID === 'P20')
-                        .map((part) => (
-                            <StyledText key={part.PartID} className="text-2xl font-bold text-black p-2 text-left">
-                                {part.PartName}
-                            </StyledText>
-                        ))}
-                </StyledView>
-
-                <StyledView className="mb-4 p-4 bg-yellow-100 rounded-3xl shadow-sm">
-                    <StyledView>
-                    {parts
-                        .filter((part) => part.PartID === 'P20')
-                        .map((part) => (
-                            <StyledText key={part.PartID} className="text-base text-gray-800">
-                                {part.ContentPart}
-                            </StyledText>
-                        ))}
-                    </StyledView>
-
-                    <StyledView className="mt-2 bg-gray-100 p-4 rounded-lg mb-2">
-                        {parts
-                            .filter((part) => part.PartID === 'P20')
-                            .map((part) => (
-                                <StyledText key={part.PartID} className="text-base text-gray-800 ">
-                                    {part.Example}
-                                </StyledText>
-                            ))}
-                    </StyledView>
-                </StyledView>
-
-                <StyledView className=' w-3/4 rounded-full'>
-                    {parts
-                        .filter((part) => part.PartID === 'P21')
+                        .filter((part) => part.PartID === 'P25')
                         .map((part) => (
                             <StyledText key={part.PartID} className="text-2xl font-bold text-black p-2 text-left">
                                 {part.PartName}
@@ -151,7 +99,7 @@ const Unit_5_2 = ({ navigation }) => {
                 <StyledView className="mb-4 p-4 bg-yellow-100 rounded-3xl shadow-sm">
                     <StyledView>
                         {parts
-                            .filter((part) => part.PartID === 'P21')
+                            .filter((part) => part.PartID === 'P25')
                             .map((part) => (
                                 <StyledText key={part.PartID} className="text-base text-gray-800">
                                     {part.ContentPart}
@@ -160,45 +108,24 @@ const Unit_5_2 = ({ navigation }) => {
                     </StyledView>
 
                     <StyledText className="text-lg font-bold text-black mb-2 mt-2">
-                        ตัวอย่างโค้ด
+                        ตัวอย่าง
                     </StyledText>
-
                     <StyledView className="bg-gray-100 p-4 rounded-lg mb-2">
                         {parts
-                            .filter((part) => part.PartID === 'P21')
+                            .filter((part) => part.PartID === 'P25')
                             .map((part) => (
                                 <StyledText key={part.PartID} className="text-base text-gray-800 ">
                                     {part.Example}
                                 </StyledText>
                             ))}
                     </StyledView>
-
-                    <StyledText className="text-xl font-bold text-black mb-2">
-                        ผลลัพธ์
-                    </StyledText>
-
-                    <StyledView className="bg-gray-100 p-4 rounded-lg mb-2">
-                        {parts
-                            .filter((part) => part.PartID === 'P21')
-                            .map((part) => (
-                                <StyledText key={part.PartID} className="text-base text-gray-800">
-                                    {part.ResultRuncode}
-                                </StyledText>
-                            ))}
-                    </StyledView>
-
-                    <StyledTouchableOpacity className=" bg-blue-500 p-3 rounded-full items-center">
-                        <StyledText className="text-white text-base font-bold">
-                            ลองรัน
-                        </StyledText>
-                    </StyledTouchableOpacity>
                 </StyledView>
 
                 <StyledView className="flex-row justify-end mt-3">
 
                     <StyledTouchableOpacity className="bg-blue-500 p-3 rounded-full w-2/5 items-center"
                         onPress={() => {
-                            navigation.navigate('Unit_5_3');
+                            navigation.navigate('Unit_5_5');
                         }}
                     >
                         <StyledText className="text-white text-base font-bold">
@@ -212,4 +139,4 @@ const Unit_5_2 = ({ navigation }) => {
     );
 };
 
-export default Unit_5_2;
+export default Unit_5_4;

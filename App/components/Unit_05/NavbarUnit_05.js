@@ -23,7 +23,7 @@ const NavbarUnit_05 = ({ navigation = useNavigation() }) => {
 
   useEffect(() => {
     // ดึงข้อมูลจาก API
-    axios.get("http://192.168.28.189:8000/units")
+    axios.get("http://192.168.0.149:8000/units")
       .then((response) => {
         setUnits(response.data);
       })

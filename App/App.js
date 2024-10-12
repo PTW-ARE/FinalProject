@@ -20,6 +20,7 @@ import Unit_5 from './components/Unit_05/Unit_5';
 import Unit_5_2 from './components/Unit_05/Unit_5_2';
 import Unit_5_3 from './components/Unit_05/Unit_5_3';
 import Unit_5_4 from './components/Unit_05/Unit_5_4';
+import C_Compiler from './components/Simulate_C/C_Compiler';
 
 
 const Stack = createNativeStackNavigator();
@@ -34,7 +35,7 @@ export default function App() {
     // <Navbar></Navbar>
     
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Unit_5_4">
+      <Stack.Navigator initialRouteName="Menu">
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
         <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false }} />
@@ -52,6 +53,7 @@ export default function App() {
         <Stack.Screen name="Unit_5_2" component={Unit_5_2} options={{ headerShown: false }} />
         <Stack.Screen name="Unit_5_3" component={Unit_5_3} options={{ headerShown: false }} />
         <Stack.Screen name="Unit_5_4" component={Unit_5_4} options={{ headerShown: false }} />
+        <Stack.Screen name="C_Compiler" component={C_Compiler} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
 

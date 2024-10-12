@@ -9,18 +9,22 @@ const StyledText = styled(Text);
 const StyledTouchableOpacity = styled(TouchableOpacity);
 
 const Unit_5_4 = ({ navigation }) => {
+    
     const [parts, setParts] = useState([]);
 
     useEffect(() => {
-        // ดึงข้อมูลจาก API
-        axios.get("http://192.168.0.149:8000/part")
-            .then((response) => {
-                setParts(response.data);
-            })
-            .catch(error => {
-                console.error("There was an error fetching the part!", error);
-            });
-    }, []);
+        const unsubscribe = navigation.addListener('focus', () => {
+            axios.get("http://192.168.0.149:8000/part")
+                .then((response) => {
+                    setParts(response.data);
+                })
+                .catch(error => {
+                    console.error("There was an error fetching the part!", error);
+                });
+        });
+
+        return unsubscribe;
+    }, [navigation]);
 
     return (
         <StyledView className="flex-1 bg-gray-100">
@@ -79,8 +83,8 @@ const Unit_5_4 = ({ navigation }) => {
                             ))}
                     </StyledView>
 
-                    <StyledTouchableOpacity className="mt-4 bg-blue-500 p-3 rounded-full items-center">
-                        <StyledText className="text-white text-base font-bold">
+                    <StyledTouchableOpacity className="mt-4  items-center">
+                        <StyledText className="text-white bg-blue-500 text-lg font-bold p-3 rounded-full w-full text-center">
                             ลองรัน
                         </StyledText>
                     </StyledTouchableOpacity>
@@ -125,7 +129,7 @@ const Unit_5_4 = ({ navigation }) => {
 
                     <StyledTouchableOpacity className="bg-blue-500 p-3 rounded-full w-2/5 items-center"
                         onPress={() => {
-                            navigation.navigate('Unit_5_5');
+                            navigation.navigate('Menu');
                         }}
                     >
                         <StyledText className="text-white text-base font-bold">

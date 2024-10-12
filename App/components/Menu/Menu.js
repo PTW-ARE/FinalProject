@@ -3,6 +3,7 @@ import { styled } from 'nativewind';
 import Navbar from './NavbarMenu';
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { SafeAreaView } from 'react-native';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -13,18 +14,52 @@ const Menu = ({ navigation }) => {
     const [units, setUnits] = useState([]);
 
     useEffect(() => {
-        // ดึงข้อมูลจาก API
-        axios.get("http://192.168.0.149:8000/units")
-            .then((response) => {
-                setUnits(response.data);
-            })
-            .catch(error => {
-                console.error("There was an error fetching the units!", error);
-            });
-    }, []);
+        const unsubscribe = navigation.addListener('focus', () => {
+            
+            axios.get("http://192.168.0.149:8000/units")
+                .then((response) => {
+                    console.log("Fetched units:", response.data);
+                    setUnits(response.data);
+                })
+                .catch(error => {
+                    console.error("There was an error fetching the units!", error);
+                });
+        });
+
+        // Cleanup listener เมื่อ component ถูก unmount
+        return unsubscribe;
+    }, [navigation]);
+    
+    const renderItem = ({ item }) => (
+        <StyledTouchableOpacity
+            key={item.UnitID}
+            className="bg-blue-600 p-3 mb-4 w-3/4 rounded-full shadow-md"
+            onPress={() => {
+                if (item.UnitID === 'U01') {
+                    navigation.navigate('Unit_1');
+                } else if (item.UnitID === 'U02') {
+                    navigation.navigate('Unit_2');
+                } else if (item.UnitID === 'U03') {
+                    navigation.navigate('Unit_3');
+                } else if (item.UnitID === 'U04') {
+                    navigation.navigate('Unit_4');
+                } else if (item.UnitID === 'U05') {
+                    navigation.navigate('Unit_5');
+                } else if (item.UnitID === 'U06') {
+                    navigation.navigate('C_Compiler');
+                } else {
+                    navigation.navigate('Unit_Default', { unitId: item.UnitID });
+                }
+            }}
+        >
+            <StyledText className="text-white text-xl font-bold text-center">
+                {item.UnitName}
+            </StyledText>
+        </StyledTouchableOpacity>
+    );
 
     return (
-        <StyledView className="flex-1 bg-white flex-col">
+        <SafeAreaView key={units.length} className="flex-auto bg-white flex-col">
             <Navbar navigation={navigation} />
 
             <StyledView className="ml-8 mt-10 mb-1">
@@ -33,37 +68,43 @@ const Menu = ({ navigation }) => {
                 </StyledText>
             </StyledView>
 
-            <StyledText></StyledText>
+            <StyledView className="flex bg-white items-center py-7 rounded-3xl mx-3">
+                {units.length > 0 ? (
+                    units.map((unit) => (
+                        <StyledTouchableOpacity
+                            key={unit.UnitID}
+                            className="bg-blue-600 p-3 mb-4 w-80 rounded-full shadow-md"
+                            onPress={() => {
+                                if (unit.UnitID === 'U01') {
+                                    navigation.navigate('Unit_1');
+                                } else if (unit.UnitID === 'U02') {
+                                    navigation.navigate('Unit_2');
+                                } else if (unit.UnitID === 'U03') {
+                                    navigation.navigate('Unit_3');
+                                } else if (unit.UnitID === 'U04') {
+                                    navigation.navigate('Unit_4');
+                                } else if (unit.UnitID === 'U05') {
+                                    navigation.navigate('Unit_5');
+                                } else if (unit.UnitID === 'U06') {
+                                    navigation.navigate('C_Compiler');
+                                } else {
+                                    navigation.navigate('Unit_Default', { unitId: unit.UnitID });
+                                }
+                            }}
+                        >
+                            <StyledText className="text-white text-xl font-bold text-center">
+                                {unit.UnitName}
+                            </StyledText>
+                        </StyledTouchableOpacity>
+                    ))
 
-            <StyledView className="flex-1 bg-white flex-col  items-center mt-1 py-7 mx-3 rounded-3xl">
-                {units.map((unit) => (
-                    <StyledTouchableOpacity
-                        key={unit.UnitID}
-                        className="bg-blue-600 p-3 mb-4 w-3/4 rounded-full shadow-md"
-                        onPress={() => {
-                            if (unit.UnitID === 'U01') {
-                                navigation.navigate('Unit_1');
-                            } else if (unit.UnitID === 'U02') {
-                                navigation.navigate('Unit_2');
-                            } else if (unit.UnitID === 'U03') {
-                                navigation.navigate('');
-                            } else if (unit.UnitID === 'U04') {
-                                navigation.navigate('');
-                            } else if (unit.UnitID === 'U05') {
-                                navigation.navigate('');
-                            } else {
-                                navigation.navigate('Unit_Default', { unitId: unit.UnitID });
-                            }
-                        }}
-                    >
-                        <StyledText className="text-white text-xl font-bold text-center">
-                            {unit.UnitName}
-                        </StyledText>
-                    </StyledTouchableOpacity>
-                ))}
+                ) : (
+                    <StyledText>Loading...</StyledText>
+                )}
+
             </StyledView>
 
-        </StyledView>
+        </SafeAreaView>
     );
 };
 

@@ -12,15 +12,18 @@ const Unit_2 = ({ navigation }) => {
     const [parts, setParts] = useState([]);
 
     useEffect(() => {
-        // ดึงข้อมูลจาก API
-        axios.get("http://192.168.0.149:8000/part")
-            .then((response) => {
-                setParts(response.data);
-            })
-            .catch(error => {
-                console.error("There was an error fetching the part!", error);
-            });
-    }, []);
+        const unsubscribe = navigation.addListener('focus', () => {
+            axios.get("http://192.168.0.149:8000/part")
+                .then((response) => {
+                    setParts(response.data);
+                })
+                .catch(error => {
+                    console.error("There was an error fetching the part!", error);
+                });
+        });
+
+        return unsubscribe;
+    }, [navigation]);
 
     return (
         <StyledView className="flex-1 bg-gray-100">

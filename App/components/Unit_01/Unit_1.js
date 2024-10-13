@@ -102,7 +102,7 @@ const Unit_1 = ({ navigation }) => {
                     </StyledView>
 
                     <StyledTouchableOpacity className="mt-4 items-center">
-                        <StyledText className="text-white bg-blue-500  text-lg font-bold p-3 rounded-full w-full text-center">
+                        <StyledText className="text-white bg-blue-500 text-lg font-bold p-3 rounded-full w-full text-center">
                             ลองรัน
                         </StyledText>
                     </StyledTouchableOpacity>

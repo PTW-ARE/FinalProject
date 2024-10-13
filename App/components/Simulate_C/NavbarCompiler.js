@@ -40,7 +40,7 @@ const NavbarCompiler = ({ navigation = useNavigation() }) => {
       <StyledView></StyledView>
       <StyledView>
         {units
-          .filter((unit) => unit.UnitID === 'U01')
+          .filter((unit) => unit.UnitID === 'U06')
           .map((unit) => (
             <StyledText key={unit.UnitID} className="text-white text-2xl font-bold flex-col justify-center items-center">
               {unit.UnitName}

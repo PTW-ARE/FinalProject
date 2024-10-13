@@ -11,6 +11,12 @@ const bodyParser = require('body-parser');
 
 const core = require("cors");
 
+const { exec } = require('child_process');
+const fs = require('fs');
+
+
+
+
 app.use(core());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -43,6 +49,39 @@ app.get('/part', (req, res) => {
             return res.status(500).json({ error });
         }
         res.json(results);
+    });
+});
+
+app.post('/compile', (req, res) => {
+    const { code } = req.body;
+
+    // สร้างไฟล์ C ชั่วคราว
+    const filePath = path.join(__dirname, 'temp.c');
+    fs.writeFileSync(filePath, code);
+
+    const clangCommand = `"${path.join(__dirname, 'assets', 'clang+llvm-18.1.8-x86_64-pc-windows-msvc', 'bin', 'clang.exe')}" -I"C:\\Path\\To\\VisualStudio\\VC\\include" ${filePath} -o temp.out && temp.out`;
+
+    // คำสั่งในการคอมไพล์โค้ด C โดยใช้ gcc
+    exec(clangCommand, (error, stdout, stderr) => {
+        if (error || stderr) {
+            console.error('Compilation Error:', error); // เพิ่มบรรทัดนี้
+            console.error('Standard Error Output:', stderr); // เพิ่มบรรทัดนี้
+            return res.status(500).json({
+                result: false,
+                message: "เกิดข้อผิดพลาดในการคอมไพล์",
+                error: stderr || error.message,
+            });
+        }
+
+        // ส่งผลลัพธ์กลับไปยังแอป
+        res.json({
+            result: true,
+            output: stdout
+        });
+
+        // ลบไฟล์ชั่วคราว
+        fs.unlinkSync(filePath);
+        fs.unlinkSync(path.join(__dirname, 'temp.out'));
     });
 });
 

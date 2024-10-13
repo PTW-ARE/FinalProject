@@ -92,7 +92,7 @@ const Unit_3_2 = ({ navigation }) => {
                         {parts
                             .filter((part) => part.PartID === 'P12')
                             .map((part) => (
-                                <StyledText key={part.PartID} className="text-base text-gray-800">
+                                <StyledText key={part.PartID} className="text-sm text-gray-800">
                                     {part.RuncodeContent}
                                 </StyledText>
                             ))}
@@ -114,7 +114,12 @@ const Unit_3_2 = ({ navigation }) => {
                             ))}
                     </StyledView>
 
-                    <StyledTouchableOpacity className="mt-4  items-center">
+                    <StyledTouchableOpacity
+                        className="mt-4 items-center"
+                        onPress={() => {
+                            navigation.navigate('C_Part11');
+                        }}>
+                            
                         <StyledText className="text-white bg-blue-500 text-lg font-bold p-3 rounded-full w-full text-center">
                             ลองรัน
                         </StyledText>
@@ -124,7 +129,7 @@ const Unit_3_2 = ({ navigation }) => {
 
                 <StyledView className="flex-row justify-end mt-3">
 
-                    <StyledTouchableOpacity className="bg-blue-500 p-3 rounded-full w-2/5 items-center"
+                    <StyledTouchableOpacity className="bg-red-500 p-3 rounded-full w-2/5 items-center"
                         onPress={() => {
                             navigation.navigate('Unit_4');
                         }}

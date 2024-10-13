@@ -18,7 +18,6 @@ const Menu = ({ navigation }) => {
             
             axios.get("http://192.168.0.149:8000/units")
                 .then((response) => {
-                    console.log("Fetched units:", response.data);
                     setUnits(response.data);
                 })
                 .catch(error => {
@@ -30,33 +29,6 @@ const Menu = ({ navigation }) => {
         return unsubscribe;
     }, [navigation]);
     
-    const renderItem = ({ item }) => (
-        <StyledTouchableOpacity
-            key={item.UnitID}
-            className="bg-blue-600 p-3 mb-4 w-3/4 rounded-full shadow-md"
-            onPress={() => {
-                if (item.UnitID === 'U01') {
-                    navigation.navigate('Unit_1');
-                } else if (item.UnitID === 'U02') {
-                    navigation.navigate('Unit_2');
-                } else if (item.UnitID === 'U03') {
-                    navigation.navigate('Unit_3');
-                } else if (item.UnitID === 'U04') {
-                    navigation.navigate('Unit_4');
-                } else if (item.UnitID === 'U05') {
-                    navigation.navigate('Unit_5');
-                } else if (item.UnitID === 'U06') {
-                    navigation.navigate('C_Compiler');
-                } else {
-                    navigation.navigate('Unit_Default', { unitId: item.UnitID });
-                }
-            }}
-        >
-            <StyledText className="text-white text-xl font-bold text-center">
-                {item.UnitName}
-            </StyledText>
-        </StyledTouchableOpacity>
-    );
 
     return (
         <SafeAreaView key={units.length} className="flex-auto bg-white flex-col">
@@ -92,7 +64,7 @@ const Menu = ({ navigation }) => {
                                 }
                             }}
                         >
-                            <StyledText className="text-white text-xl font-bold text-center">
+                            <StyledText className="text-white text-xl font-bold text-center ">
                                 {unit.UnitName}
                             </StyledText>
                         </StyledTouchableOpacity>

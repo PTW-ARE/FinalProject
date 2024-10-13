@@ -135,7 +135,12 @@ const Unit_5_3 = ({ navigation }) => {
                             ))}
                     </StyledView>
 
-                    <StyledTouchableOpacity className="mt-4  items-center">
+                    <StyledTouchableOpacity
+                        className="mt-4 items-center"
+                        onPress={() => {
+                            navigation.navigate('C_Part23');
+                        }}>
+                            
                         <StyledText className="text-white bg-blue-500 text-lg font-bold p-3 rounded-full w-full text-center">
                             ลองรัน
                         </StyledText>

@@ -102,7 +102,12 @@ const Unit_5_2 = ({ navigation }) => {
                             ))}
                     </StyledView>
 
-                    <StyledTouchableOpacity className="mt-4  items-center">
+                    <StyledTouchableOpacity
+                        className="mt-4 items-center"
+                        onPress={() => {
+                            navigation.navigate('C_Part19');
+                        }}>
+                            
                         <StyledText className="text-white bg-blue-500 text-lg font-bold p-3 rounded-full w-full text-center">
                             ลองรัน
                         </StyledText>
@@ -190,7 +195,12 @@ const Unit_5_2 = ({ navigation }) => {
                             ))}
                     </StyledView>
 
-                    <StyledTouchableOpacity className="mt-4  items-center">
+                    <StyledTouchableOpacity
+                        className="mt-4 items-center"
+                        onPress={() => {
+                            navigation.navigate('C_Part21');
+                        }}>
+                            
                         <StyledText className="text-white bg-blue-500 text-lg font-bold p-3 rounded-full w-full text-center">
                             ลองรัน
                         </StyledText>
@@ -205,7 +215,7 @@ const Unit_5_2 = ({ navigation }) => {
                         }}
                     >
                         <StyledText className="text-white text-base font-bold">
-                            บทต่อไป
+                            หน้าต่อไป
                         </StyledText>
                     </StyledTouchableOpacity>
                 </StyledView>

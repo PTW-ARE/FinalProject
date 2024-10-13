@@ -95,7 +95,7 @@ const Unit_2 = ({ navigation }) => {
 
                     <StyledTouchableOpacity className="bg-blue-500 p-3 rounded-full w-2/5 items-center"
                         onPress={() => {
-                            navigation.navigate('Unit_3');
+                            navigation.navigate('Unit_2_2');
                         }}
                     >
                         <StyledText className="text-white text-base font-bold">

@@ -68,7 +68,12 @@ const Unit_4 = ({ navigation }) => {
                             ))}
                     </StyledView>
 
-                    <StyledTouchableOpacity className="mt-4  items-center">
+                    <StyledTouchableOpacity
+                        className="mt-4 items-center"
+                        onPress={() => {
+                            navigation.navigate('C_Part13');
+                        }}>
+                            
                         <StyledText className="text-white bg-blue-500 text-lg font-bold p-3 rounded-full w-full text-center">
                             ลองรัน
                         </StyledText>
@@ -124,7 +129,12 @@ const Unit_4 = ({ navigation }) => {
                             ))}
                     </StyledView>
 
-                    <StyledTouchableOpacity className="mt-4  items-center">
+                    <StyledTouchableOpacity
+                        className="mt-4 items-center"
+                        onPress={() => {
+                            navigation.navigate('C_Part14');
+                        }}>
+                            
                         <StyledText className="text-white bg-blue-500 text-lg font-bold p-3 rounded-full w-full text-center">
                             ลองรัน
                         </StyledText>
@@ -133,7 +143,7 @@ const Unit_4 = ({ navigation }) => {
 
                 <StyledView className="flex-row justify-end mt-3">
 
-                    <StyledTouchableOpacity className="bg-blue-500 p-3 rounded-full w-2/5 items-center"
+                    <StyledTouchableOpacity className="bg-red-500 p-3 rounded-full w-2/5 items-center"
                         onPress={() => {
                             navigation.navigate('Unit_5');
                         }}

@@ -8,7 +8,7 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledTouchableOpacity = styled(TouchableOpacity);
 
-const C_Compiler = ({ navigation }) => {
+const C_Part19 = ({ navigation }) => {
 
     const [output, setOutput] = useState(''); // เก็บผลลัพธ์ที่ได้จากการรันโค้ด
     const [parts, setParts] = useState([]);
@@ -29,7 +29,7 @@ const C_Compiler = ({ navigation }) => {
 
     const runCode = () => {
         axios.post('http://192.168.0.149:8000/compile', {
-            code: parts.find(part => part.PartID === 'P02').RuncodeContent
+            code: parts.find(part => part.PartID === 'P19').RuncodeContent
         })
             .then(response => {
                 setOutput(response.data.output); // เก็บผลลัพธ์ที่ได้ใน state
@@ -54,7 +54,7 @@ const C_Compiler = ({ navigation }) => {
 
                 <StyledView className="bg-white h-80 px-2 shadow-sm">
                     {parts
-                        .filter((part) => part.PartID === 'P02')
+                        .filter((part) => part.PartID === 'P19')
                         .map((part) => (
                             <StyledText key={part.PartID} className="text-base text-gray-800">
                                 {part.RuncodeContent}
@@ -89,4 +89,4 @@ const C_Compiler = ({ navigation }) => {
     );
 };
 
-export default C_Compiler;
+export default C_Part19;

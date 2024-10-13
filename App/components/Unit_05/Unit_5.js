@@ -71,6 +71,44 @@ const Unit_5 = ({ navigation }) => {
 
                     <StyledView className="bg-gray-100 p-4 rounded-lg mb-2">
                         {parts
+                            .filter((part) => part.PartID === 'P16')
+                            .map((part) => (
+                                <StyledText key={part.PartID} className="text-base text-gray-800">
+                                    {part.Example}
+                                </StyledText>
+                            ))}
+                    </StyledView>
+
+                    <StyledView>
+                        {parts
+                            .filter((part) => part.PartID === 'P16')
+                            .map((part) => (
+                                <StyledText key={part.PartID} className="text-base text-gray-800">
+                                    {part.ContentPart}
+                                </StyledText>
+                            ))}
+                    </StyledView>
+
+                </StyledView>
+
+                <StyledView className=' w-5/6 rounded-full'>
+                    {parts
+                        .filter((part) => part.PartID === 'P17')
+                        .map((part) => (
+                            <StyledText key={part.PartID} className="text-xl font-bold text-black p-2 text-left">
+                                {part.PartName}
+                            </StyledText>
+                        ))}
+                </StyledView>
+
+                <StyledView className="mb-4 p-4 bg-blue-200 rounded-3xl shadow-sm">
+                    
+                    <StyledText className="text-lg font-bold text-black mb-2 mt-2">
+                        ตัวอย่างโค้ด
+                    </StyledText>
+
+                    <StyledView className="bg-gray-100 p-4 rounded-lg mb-2">
+                        {parts
                             .filter((part) => part.PartID === 'P17')
                             .map((part) => (
                                 <StyledText key={part.PartID} className="text-base text-gray-800">
@@ -89,7 +127,12 @@ const Unit_5 = ({ navigation }) => {
                             ))}
                     </StyledView>
 
-                    <StyledTouchableOpacity className="mt-4  items-center">
+                    <StyledTouchableOpacity
+                        className="mt-4 items-center"
+                        onPress={() => {
+                            navigation.navigate('C_Part17');
+                        }}>
+                            
                         <StyledText className="text-white bg-blue-500 text-lg font-bold p-3 rounded-full w-full text-center">
                             ลองรัน
                         </StyledText>
@@ -105,7 +148,7 @@ const Unit_5 = ({ navigation }) => {
                         }}
                     >
                         <StyledText className="text-white text-base font-bold">
-                            บทต่อไป
+                            หน้าต่อไป
                         </StyledText>
                     </StyledTouchableOpacity>
                 </StyledView>

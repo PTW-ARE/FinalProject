@@ -15,8 +15,6 @@ const { exec } = require('child_process');
 const fs = require('fs');
 
 
-
-
 app.use(core());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -59,7 +57,7 @@ app.post('/compile', (req, res) => {
     const filePath = path.join(__dirname, 'temp.c');
     fs.writeFileSync(filePath, code);
 
-    const clangCommand = `"${path.join(__dirname, 'assets', 'clang+llvm-18.1.8-x86_64-pc-windows-msvc', 'bin', 'clang.exe')}" -I"C:\\Path\\To\\VisualStudio\\VC\\include" ${filePath} -o temp.out && temp.out`;
+    const clangCommand = `"D://clang+llvm//bin//clang.exe" -I"C://Path//To//VisualStudio//VC//include" ${filePath} -o temp.out && temp.out`;
 
     // คำสั่งในการคอมไพล์โค้ด C โดยใช้ gcc
     exec(clangCommand, (error, stdout, stderr) => {

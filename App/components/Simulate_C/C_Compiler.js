@@ -4,9 +4,6 @@ import { styled } from 'nativewind';
 import NavbarCompiler from './NavbarCompiler';
 import axios from "axios";
 
-
-
-
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledTouchableOpacity = styled(TouchableOpacity);
@@ -32,7 +29,7 @@ const C_Compiler = ({ navigation }) => {
 
     const runCode = () => {
         axios.post('http://192.168.0.149:8000/compile', {
-            code: parts.find(part => part.PartID === 'P24').RuncodeContent // ส่งโค้ด C ไปยัง server
+            code: parts.find(part => part.PartID === 'P17').RuncodeContent
         })
         .then(response => {
             setOutput(response.data.output); // เก็บผลลัพธ์ที่ได้ใน state
@@ -41,7 +38,8 @@ const C_Compiler = ({ navigation }) => {
             console.error('Error:', error);
         });
     };
-    
+
+
     return (
         <StyledView className="flex-1 bg-gray-100">
 
@@ -56,7 +54,7 @@ const C_Compiler = ({ navigation }) => {
 
                 <StyledView className="bg-white h-80 px-2 shadow-sm">
                     {parts
-                        .filter((part) => part.PartID === 'P24')
+                        .filter((part) => part.PartID === 'P17')
                         .map((part) => (
                             <StyledText key={part.PartID} className="text-base text-gray-800">
                                 {part.RuncodeContent}

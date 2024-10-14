@@ -48,12 +48,11 @@ export default function App() {
     // <Navbar></Navbar>
     
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Menu">
+      <Stack.Navigator initialRouteName="U01">
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
         <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false }} />
         <Stack.Screen name="Setting" component={Setting} options={{ headerShown: false }} />
-        <Stack.Screen name="Unit_1" component={Unit_1} options={{ headerShown: false }} />
         <Stack.Screen name="C_Part02" component={C_Part02} options={{ headerShown: false }} />
         <Stack.Screen name="C_Part04" component={C_Part04} options={{ headerShown: false }} />
         <Stack.Screen name="C_Part06" component={C_Part06} options={{ headerShown: false }} />
@@ -66,19 +65,24 @@ export default function App() {
         <Stack.Screen name="C_Part21" component={C_Part21} options={{ headerShown: false }} />
         <Stack.Screen name="C_Part23" component={C_Part23} options={{ headerShown: false }} />
         <Stack.Screen name="C_Part24" component={C_Part24} options={{ headerShown: false }} />
-        <Stack.Screen name="Unit_2" component={Unit_2} options={{ headerShown: false }} />
-        <Stack.Screen name="Unit_2_2" component={Unit_2_2} options={{ headerShown: false }} />
+
+
+        <Stack.Screen name="U01" component={Unit_1} options={{ headerShown: false }} />
+        <Stack.Screen name="U02" component={Unit_2} options={{ headerShown: false }} />
+        <Stack.Screen name="U02_2" component={Unit_2_2} options={{ headerShown: false }} />
+        <Stack.Screen name="U03" component={Unit_3} options={{ headerShown: false }} />
+        <Stack.Screen name="U03_2" component={Unit_3_2} options={{ headerShown: false }} />
+        <Stack.Screen name="U04" component={Unit_4} options={{ headerShown: false }} />
+        <Stack.Screen name="U05" component={Unit_5} options={{ headerShown: false }} />
+        <Stack.Screen name="U05_2" component={Unit_5_2} options={{ headerShown: false }} />
+        <Stack.Screen name="U05_3" component={Unit_5_3} options={{ headerShown: false }} />
+        <Stack.Screen name="U05_4" component={Unit_5_4} options={{ headerShown: false }} />
+        <Stack.Screen name="U06" component={C_Compiler} options={{ headerShown: false }} />
+
+
         <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
         <Stack.Screen name="BergerNav" component={BergerNav} options={{ headerShown: false }} />
         <Stack.Screen name="NavbarUnit_01" component={NavbarUnit_01} options={{ headerShown: false }} />
-        <Stack.Screen name="Unit_3" component={Unit_3} options={{ headerShown: false }} />
-        <Stack.Screen name="Unit_3_2" component={Unit_3_2} options={{ headerShown: false }} />
-        <Stack.Screen name="Unit_4" component={Unit_4} options={{ headerShown: false }} />
-        <Stack.Screen name="Unit_5" component={Unit_5} options={{ headerShown: false }} />
-        <Stack.Screen name="Unit_5_2" component={Unit_5_2} options={{ headerShown: false }} />
-        <Stack.Screen name="Unit_5_3" component={Unit_5_3} options={{ headerShown: false }} />
-        <Stack.Screen name="Unit_5_4" component={Unit_5_4} options={{ headerShown: false }} />
-        <Stack.Screen name="C_Compiler" component={C_Compiler} options={{ headerShown: false }} />
         <Stack.Screen name="NavbarCompiler" component={NavbarCompiler} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>

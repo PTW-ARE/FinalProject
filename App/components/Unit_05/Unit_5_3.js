@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { styled } from 'nativewind';
-import NavbarUnit_05 from './NavbarUnit_05';
+import NavbarUnit_05 from '../Navbar/NavbarUnit_05';
 import axios from "axios";
 
 const StyledView = styled(View);
@@ -151,7 +151,7 @@ const Unit_5_3 = ({ navigation }) => {
 
                 <StyledTouchableOpacity className="bg-blue-500 p-3 rounded-full w-2/5 items-center"
                     onPress={() => {
-                        navigation.navigate('Unit_5_4');
+                        navigation.navigate('U05_4');
                     }}
                 >
                     <StyledText className="text-white text-base font-bold">

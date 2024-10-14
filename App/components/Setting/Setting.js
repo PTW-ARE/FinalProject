@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { styled } from 'nativewind';
-import Navbar from "./NavbarSetting";
+import Navbar from "../Navbar/NavbarSetting";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);

@@ -9,11 +9,8 @@ import Login from './components/Login&Register/Login';
 import Register from './components/Login&Register/Register';
 import Setting from './components/Setting/Setting';
 import Unit_1 from './components/Unit_01/Unit_1';
-import C_Part02 from './components/Simulate_C/C_Part02';
 import Unit_2 from './components/Unit_02/Unit_2';
 import Unit_2_2 from './components/Unit_02/Unit_2_2';
-import BergerNav from './components/Unit_01/BergerNav';
-import NavbarUnit_01 from './components/Unit_01/BergerNav';
 import Unit_3 from './components/Unit_03/Unit_3';
 import Unit_3_2 from './components/Unit_03/Unit_3_2';
 import Unit_4 from './components/Unit_04/Unit_4';
@@ -22,7 +19,8 @@ import Unit_5_2 from './components/Unit_05/Unit_5_2';
 import Unit_5_3 from './components/Unit_05/Unit_5_3';
 import Unit_5_4 from './components/Unit_05/Unit_5_4';
 import C_Compiler from './components/Simulate_C/C_Compiler';
-import NavbarCompiler from './components/Simulate_C/NavbarCompiler';
+import NavbarCompiler from './components/Navbar/NavbarCompiler';
+import C_Part02 from './components/Simulate_C/C_Part02';
 import C_Part04 from './components/Simulate_C/C_Part04';
 import C_Part06 from './components/Simulate_C/C_Part06';
 import C_Part10 from './components/Simulate_C/C_Part10';
@@ -34,6 +32,7 @@ import C_Part19 from './components/Simulate_C/C_Part19';
 import C_Part21 from './components/Simulate_C/C_Part21';
 import C_Part23 from './components/Simulate_C/C_Part23';
 import C_Part24 from './components/Simulate_C/C_Part24';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -81,8 +80,7 @@ export default function App() {
 
 
         <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
-        <Stack.Screen name="BergerNav" component={BergerNav} options={{ headerShown: false }} />
-        <Stack.Screen name="NavbarUnit_01" component={NavbarUnit_01} options={{ headerShown: false }} />
+        
         <Stack.Screen name="NavbarCompiler" component={NavbarCompiler} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>

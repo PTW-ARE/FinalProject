@@ -10,10 +10,10 @@ const StyledText = styled(Text);
 const StyledTouchableOpacity = styled(TouchableOpacity);
 const StyledImage = styled(Image);
 
-const NavbarUnit_01 = ({ navigation = useNavigation() }) => {
+const NavbarCompiler = ({ navigation = useNavigation() }) => {
   const [units, setUnits] = useState([]);
-  const [selectedUnit, setSelectedUnit] = useState('U01');
-  const [dropdownVisible, setDropdownVisible] = useState(false); // สถานะสำหรับแสดง Dropdown
+  const [selectedUnit, setSelectedUnit] = useState('U06');
+  const [dropdownVisible, setDropdownVisible] = useState(false);
 
   useEffect(() => {
     // ดึงข้อมูลจาก API
@@ -28,12 +28,12 @@ const NavbarUnit_01 = ({ navigation = useNavigation() }) => {
 
   const handleUnitChange = (unitID) => {
     setSelectedUnit(unitID);
-    setDropdownVisible(false); // ปิด Dropdown หลังจากเลือก
-    navigation.navigate(unitID); // เปลี่ยนไปยังบทที่เลือก
+    setDropdownVisible(false); 
+    navigation.navigate(unitID); 
   };
 
   return (
-    <StyledView className="bg-blue-700 p-4 rounded-b-3xl flex-row justify-between pt-8">
+    <StyledView className="bg-red-700 p-4 rounded-b-3xl flex-row justify-between pt-8">
       <StyledView></StyledView>
       <StyledView>
         {units
@@ -45,17 +45,17 @@ const NavbarUnit_01 = ({ navigation = useNavigation() }) => {
           ))}
       </StyledView>
       <StyledTouchableOpacity
-        onPress={() => setDropdownVisible(!dropdownVisible)} // เปิด/ปิด Dropdown
+        onPress={() => setDropdownVisible(!dropdownVisible)} 
         className={"pt-3"}
       >
-        <StyledImage source={require('../Unit_01/asset/BergerMenu.png')} className="w-5 h-5" />
+        <StyledImage source={require('../Unit_01/asset/BergerMenu.png')} className="w-6 h-6" />
       </StyledTouchableOpacity>
 
       {/* Modal สำหรับ Dropdown */}
       <Modal
         transparent={true}
         visible={dropdownVisible}
-        onRequestClose={() => setDropdownVisible(false)} // ปิด Dropdown
+        onRequestClose={() => setDropdownVisible(false)} 
       >
         <TouchableWithoutFeedback onPress={() => setDropdownVisible(false)}>
           <StyledView className="flex-1 justify-center items-center bg-transparent"> 
@@ -83,4 +83,4 @@ const NavbarUnit_01 = ({ navigation = useNavigation() }) => {
   );
 };
 
-export default NavbarUnit_01;
+export default NavbarCompiler;

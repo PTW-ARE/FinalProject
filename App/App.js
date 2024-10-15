@@ -33,8 +33,6 @@ import C_Part21 from './components/Simulate_C/C_Part21';
 import C_Part23 from './components/Simulate_C/C_Part23';
 import C_Part24 from './components/Simulate_C/C_Part24';
 
-
-
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -45,11 +43,11 @@ export default function App() {
     //<Login></Login>
     //<Unit1></Unit1>
     // <Navbar></Navbar>
-    
+
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="U01">
+      <Stack.Navigator initialRouteName="AddUnit">
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
-        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
+        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false }} />
         <Stack.Screen name="Setting" component={Setting} options={{ headerShown: false }} />
         <Stack.Screen name="C_Part02" component={C_Part02} options={{ headerShown: false }} />
@@ -65,7 +63,6 @@ export default function App() {
         <Stack.Screen name="C_Part23" component={C_Part23} options={{ headerShown: false }} />
         <Stack.Screen name="C_Part24" component={C_Part24} options={{ headerShown: false }} />
 
-
         <Stack.Screen name="U01" component={Unit_1} options={{ headerShown: false }} />
         <Stack.Screen name="U02" component={Unit_2} options={{ headerShown: false }} />
         <Stack.Screen name="U02_2" component={Unit_2_2} options={{ headerShown: false }} />
@@ -80,7 +77,7 @@ export default function App() {
 
 
         <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
-        
+
         <Stack.Screen name="NavbarCompiler" component={NavbarCompiler} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>

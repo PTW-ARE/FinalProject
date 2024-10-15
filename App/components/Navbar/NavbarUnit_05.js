@@ -48,7 +48,7 @@ const NavbarUnit_05 = ({ navigation = useNavigation() }) => {
         onPress={() => setDropdownVisible(!dropdownVisible)} 
         className={"pt-3"}
       >
-        <StyledImage source={require('../Unit_01/asset/BergerMenu.png')} className="w-5 h-5" />
+        <StyledImage source={require('./asset/BergerMenu.png')} className="w-5 h-5" />
       </StyledTouchableOpacity>
 
       {/* Modal สำหรับ Dropdown */}

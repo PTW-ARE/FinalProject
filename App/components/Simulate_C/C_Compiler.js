@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, TextInput } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, TextInput, Alert } from 'react-native';
 import { styled } from 'nativewind';
 import NavbarCompiler from '../Navbar/NavbarCompiler';
 import axios from "axios";
@@ -20,8 +20,9 @@ const C_Compiler = ({ navigation }) => {
                 setOutput(response.data.output); // เก็บผลลัพธ์ที่ได้ใน state
             })
             .catch(error => {
-                console.error('Error:', error);
-                setOutput("เกิดข้อผิดพลาดในการคอมไพล์");
+                // console.error('Error:', error);
+                // setOutput("เกิดข้อผิดพลาดในการคอมไพล์");
+                Alert.alert('คำเตือน', 'โค้ดไม่ถูกต้อง');
             });
     };
 
@@ -42,10 +43,10 @@ const C_Compiler = ({ navigation }) => {
                     multiline
                     className="bg-stone-200 h-80 px-2 py-2 shadow-sm"
                     value={code}
-                    onChangeText={setCode} 
+                    onChangeText={setCode}
                     placeholder="พิมพ์โค้ดภาษา C ของคุณที่นี่..."
-                    textAlignVertical="top" 
-                    style={{ textAlign: 'left' }} 
+                    textAlignVertical="top"
+                    style={{ textAlign: 'left' }}
                 />
             </StyledView>
 
@@ -61,11 +62,13 @@ const C_Compiler = ({ navigation }) => {
                     ผลลัพธ์
                 </StyledText>
 
-                <ScrollView style={{ maxHeight: 150 }} showsVerticalScrollIndicator={true}>
-                    <StyledView className="bg-stone-200 px-2 shadow-sm h-32">
+
+                <StyledView className="flex-1 bg-stone-200 px-2 shadow-sm h-32">
+                    <ScrollView style={{ maxHeight: 200 }} showsVerticalScrollIndicator={true}>
                         <StyledText>{output}</StyledText>
-                    </StyledView>
-                </ScrollView>
+                    </ScrollView>
+                </StyledView>
+
             </StyledView>
 
         </StyledView>

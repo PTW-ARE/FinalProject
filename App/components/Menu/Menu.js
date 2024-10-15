@@ -48,17 +48,17 @@ const Menu = ({ navigation }) => {
                             className="bg-blue-600 p-3 mb-4 w-80 rounded-full shadow-md"
                             onPress={() => {
                                 if (unit.UnitID === 'U01') {
-                                    navigation.navigate('Unit_1');
+                                    navigation.navigate('U01');
                                 } else if (unit.UnitID === 'U02') {
-                                    navigation.navigate('Unit_2');
+                                    navigation.navigate('U02');
                                 } else if (unit.UnitID === 'U03') {
-                                    navigation.navigate('Unit_3');
+                                    navigation.navigate('U03');
                                 } else if (unit.UnitID === 'U04') {
-                                    navigation.navigate('Unit_4');
+                                    navigation.navigate('U04');
                                 } else if (unit.UnitID === 'U05') {
-                                    navigation.navigate('Unit_5');
+                                    navigation.navigate('U05');
                                 } else if (unit.UnitID === 'U06') {
-                                    navigation.navigate('C_Compiler');
+                                    navigation.navigate('U06');
                                 } else {
                                     navigation.navigate('Unit_Default', { unitId: unit.UnitID });
                                 }

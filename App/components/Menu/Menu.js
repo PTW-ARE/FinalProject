@@ -59,7 +59,9 @@ const Menu = ({ navigation }) => {
                                     navigation.navigate('U05');
                                 } else if (unit.UnitID === 'U06') {
                                     navigation.navigate('U06');
-                                } else {
+                                } else if (unit.UnitID === 'U07') {
+                                    navigation.navigate('U07');
+                                }else {
                                     navigation.navigate('Unit_Default', { unitId: unit.UnitID });
                                 }
                             }}

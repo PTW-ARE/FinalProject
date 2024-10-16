@@ -50,6 +50,15 @@ app.get('/part', (req, res) => {
     });
 });
 
+app.get('/test', (req, res) => {
+    pool.query('SELECT * FROM test', (error, results) => {
+        if (error) {
+            return res.status(500).json({ error });
+        }
+        res.json(results);
+    });
+});
+
 app.post('/compile', (req, res) => {
     const { code } = req.body;
 

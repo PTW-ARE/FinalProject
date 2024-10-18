@@ -3,15 +3,20 @@ import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { styled } from 'nativewind';
 import NavbarPostTest from '../Navbar/NavberPostTest';
 import axios from "axios";
+import { CommonActions } from '@react-navigation/native';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledTouchableOpacity = styled(TouchableOpacity);
 
-const Test_2 = ({ navigation }) => {
+const Test_2 = ({ route, navigation }) => {
 
     const [selectedTest] = useState('T02');
     const [tests, setTests] = useState([]);
+    const [scores, setScores] = useState(route.params?.scores || {});
+    const [selectedChoice, setSelectedChoice] = useState(null);
+
+
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
@@ -26,6 +31,30 @@ const Test_2 = ({ navigation }) => {
 
         return unsubscribe;
     }, [navigation]);
+
+    const handleChoice = (choice, isCorrect) => {
+        if (selectedChoice !== choice) {
+            setSelectedChoice(choice);
+            
+            // อัปเดตคะแนนใน Object
+            setScores(prevScores => ({
+                ...prevScores,
+                [selectedTest]: isCorrect ? 1 : 0 // ถ้าตอบถูกให้เก็บ 1 ถ้าตอบผิดให้เก็บ 0
+            }));
+        }
+    };
+
+    const handleNext = () => {
+        console.log("Score to be sent:", { scores });
+        navigation.dispatch(
+            CommonActions.reset({
+                index: 0,
+                routes: [
+                    { name: 'T03', params: { scores } } // ปรับตามหน้าที่จะไป
+                ],
+            })
+        );
+    };
 
 
     return (
@@ -51,29 +80,35 @@ const Test_2 = ({ navigation }) => {
                 </StyledView>
 
                 <StyledView className='mt-5'>
-                    <StyledTouchableOpacity>
+                    <StyledTouchableOpacity
+                        onPress={() => handleChoice('Choice1', true)}
+                        className={`my-4 ml-4 w-5/6 px-4 py-2 rounded-2xl ${selectedChoice === 'Choice1' ? 'bg-violet-500' : 'bg-blue-500'}`}>
                         {tests
                             .filter((test) => test.TestID === selectedTest)
                             .map((test) => (
-                                <StyledText key={test.TestID} className='bg-blue-500 text-base text-white my-4 ml-4 mr-4 pl-4 py-2 rounded-2xl'>
+                                <StyledText key={test.TestID} className='text-base text-white'>
                                     1.{test.Choice1}
                                 </StyledText>
                             ))}
                     </StyledTouchableOpacity>
-                    <StyledTouchableOpacity>
+                    <StyledTouchableOpacity
+                        onPress={() => handleChoice('Choice2', false)}
+                        className={`my-4 ml-4 w-5/6 px-4 py-2 rounded-2xl ${selectedChoice === 'Choice2' ? 'bg-violet-500' : 'bg-blue-500'}`}>
                         {tests
                             .filter((test) => test.TestID === selectedTest)
                             .map((test) => (
-                                <StyledText key={test.TestID} className='bg-blue-500 text-base text-white my-4 ml-4 mr-4 pl-4 py-2 rounded-2xl'>
+                                <StyledText key={test.TestID} className='text-base text-white'>
                                     2.{test.Choice2}
                                 </StyledText>
                             ))}
                     </StyledTouchableOpacity>
-                    <StyledTouchableOpacity>
+                    <StyledTouchableOpacity
+                        onPress={() => handleChoice('Choice3', false)}
+                        className={`my-4 ml-4 w-5/6 px-4 py-2 rounded-2xl ${selectedChoice === 'Choice3' ? 'bg-violet-500' : 'bg-blue-500'}`}>
                         {tests
                             .filter((test) => test.TestID === selectedTest)
                             .map((test) => (
-                                <StyledText key={test.TestID} className='bg-blue-500 text-base text-white my-4 ml-4 mr-4 pl-4 py-2 rounded-2xl'>
+                                <StyledText key={test.TestID} className='text-base text-white'>
                                     3.{test.Choice3}
                                 </StyledText>
                             ))}
@@ -83,13 +118,13 @@ const Test_2 = ({ navigation }) => {
             </StyledView>
 
             <StyledView className="flex-row justify-end">
-
                 <StyledTouchableOpacity
                     onPress={() => {
-                        navigation.navigate('T03');
+                        
+                        handleNext()
                     }}
                 >
-                    <StyledText className="text-white text-base font-bold bg-blue-500 px-7 py-3 m-4 rounded-3xl ">
+                    <StyledText className="text-white text-base font-bold bg-blue-500 px-7 py-3 m-4 rounded-3xl">
                         ข้อต่อไป
                     </StyledText>
                 </StyledTouchableOpacity>

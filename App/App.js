@@ -42,7 +42,8 @@ import Test_7 from './components/Test/Test_7';
 import Test_8 from './components/Test/Test_8';
 import Test_9 from './components/Test/Test_9';
 import Test_10 from './components/Test/Test_10';
-import Result from './components/Test/Result';
+import CriteriaTest from './components/Test/CriteriaTest';
+import Profile from './components/Profile/Profile';
 
 const Stack = createNativeStackNavigator();
 
@@ -56,7 +57,7 @@ export default function App() {
     // <Navbar></Navbar>
 
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Result">
+      <Stack.Navigator initialRouteName="U07">
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false }} />
@@ -86,7 +87,8 @@ export default function App() {
         <Stack.Screen name="U05_4" component={Unit_5_4} options={{ headerShown: false }} />
         <Stack.Screen name="U06" component={C_Compiler} options={{ headerShown: false }} />
 
-        <Stack.Screen name="U07" component={Test_1} options={{ headerShown: false }} />
+        <Stack.Screen name="U07" component={CriteriaTest} options={{ headerShown: false }} />
+        <Stack.Screen name="T01" component={Test_1} options={{ headerShown: false }} />
         <Stack.Screen name="T02" component={Test_2} options={{ headerShown: false }} />
         <Stack.Screen name="T03" component={Test_3} options={{ headerShown: false }} />
         <Stack.Screen name="T04" component={Test_4} options={{ headerShown: false }} />
@@ -96,8 +98,8 @@ export default function App() {
         <Stack.Screen name="T08" component={Test_8} options={{ headerShown: false }} />
         <Stack.Screen name="T09" component={Test_9} options={{ headerShown: false }} />
         <Stack.Screen name="T10" component={Test_10} options={{ headerShown: false }} />
-        <Stack.Screen name="Result" component={Result} options={{ headerShown: false }} />
-
+        
+        <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
 
         <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
 

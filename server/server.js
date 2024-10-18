@@ -59,6 +59,63 @@ app.get('/test', (req, res) => {
     });
 });
 
+app.get('/customer', (req, res) => {
+    pool.query('SELECT * FROM customer', (error, results) => {
+        if (error) {
+            return res.status(500).json({ error });
+        }
+        res.json(results);
+    });
+});
+
+app.post('/saveTestScore', (req, res) => {
+    const { score } = req.body;
+    
+    const customerID = 'C03'; 
+
+    // ค้นหาคะแนนเก่าในฐานข้อมูล
+    const sqlSelect = "SELECT TestScore FROM customer WHERE CustomerID = ?";
+    pool.query(sqlSelect, [customerID], (error, results) => {
+        if (error) {
+            console.error("Error during retrieving old test score: ", error);
+            return res.status(500).json({
+                result: false,
+                message: "เกิดข้อผิดพลาดในการตรวจสอบคะแนน",
+            });
+        }
+
+        // ตรวจสอบคะแนนเก่า
+        const oldScore = results[0]?.TestScore || 0; // ใช้ 0 หากไม่มีคะแนนเก่า
+
+        // ตรวจสอบว่าคะแนนใหม่มากกว่าคะแนนเก่าหรือไม่
+        if (score <= oldScore) {
+            console.error("คะแนนใหม่ต้องมากกว่าคะแนนเก่า");
+            return res.status(400).json({
+                result: false,
+                message: "คะแนนใหม่ต้องมากกว่าคะแนนเก่า",
+            });
+        }
+
+        // อัปเดตคะแนนใหม่ในฐานข้อมูล
+        const sqlUpdate = "UPDATE customer SET TestScore = ? WHERE CustomerID = ?";
+        pool.query(sqlUpdate, [score, customerID], (error, results) => {
+            if (error) {
+                console.error("Error during updating test score: ", error);
+                return res.status(500).json({
+                    result: false,
+                    message: "เกิดข้อผิดพลาดในการบันทึกคะแนน",
+                });
+            }
+
+            res.json({
+                result: true,
+                message: "บันทึกคะแนนเรียบร้อยแล้ว",
+            });
+        });
+    });
+});
+
+
 app.post('/compile', (req, res) => {
     const { code } = req.body;
 

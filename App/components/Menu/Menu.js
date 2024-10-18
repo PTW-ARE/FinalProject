@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, TouchableOpacity, FlatList } from "react-native";
 import { styled } from 'nativewind';
-import Navbar from './NavbarMenu';
+import Navbar from '../Navbar/NavbarMenu';
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from 'react-native';

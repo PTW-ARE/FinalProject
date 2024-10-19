@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity,BackHandler,Alert } from 'react-native';
 import { styled } from 'nativewind';
-import NavbarPostTest from '../Navbar/NavberPostTest';
+import NavbarPostTest from '../Navbar/NavbarPostTest';
 import axios from "axios";
 import { CommonActions } from '@react-navigation/native';
 
@@ -31,6 +31,27 @@ const Test_1 = ({route, navigation }) => {
         return unsubscribe;
     }, [navigation]);
 
+    useEffect(() => {
+        const backAction = () => {
+            // แสดงข้อความเตือนเมื่อกดย้อนกลับ
+            Alert.alert(
+                "คำเตือน",
+                "ไม่สามารถย้อนกลับได้",
+                [
+                    { text: "ตกลง", onPress: () => {} } // ให้แสดงแค่ข้อความเตือนและไม่ทำอะไร
+                ]
+            );
+            return true; // ปิดกั้นการกดย้อนกลับ
+        };
+
+        const backHandler = BackHandler.addEventListener(
+            "hardwareBackPress",
+            backAction
+        );
+
+        return () => backHandler.remove(); // ลบ event เมื่อออกจากหน้าจอ
+    }, []);
+
     const handleChoice = (choice, isCorrect) => {
         if (selectedChoice !== choice) {
             setSelectedChoice(choice);
@@ -44,6 +65,15 @@ const Test_1 = ({route, navigation }) => {
     };
 
     const handleNext = () => {
+        if (selectedChoice === null) {
+            Alert.alert("คำเตือน",
+            "กรุณาเลือกคำตอบก่อนไปข้อต่อไป",
+            [
+                { text: "ตกลง", onPress: () => {} } // ให้แสดงแค่ข้อความเตือนและไม่ทำอะไร
+            ]);
+            return;
+        }
+
         console.log("Score to be sent:", { scores });
         navigation.dispatch(
             CommonActions.reset({
@@ -64,7 +94,7 @@ const Test_1 = ({route, navigation }) => {
 
             <StyledView className='bg-yellow-500 p-2 mx-10 mt-5 mb-1 rounded-xl'>
                 <StyledText className='text-white text-center text-2xl font-bold '>
-                    แบบทดสอบหลังเรียน
+                    แบบทดสอบหลังเรียนข้อที่1
                 </StyledText>
             </StyledView>
 

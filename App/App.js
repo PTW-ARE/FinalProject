@@ -44,6 +44,8 @@ import Test_9 from './components/Test/Test_9';
 import Test_10 from './components/Test/Test_10';
 import CriteriaTest from './components/Test/CriteriaTest';
 import Profile from './components/Profile/Profile';
+import TestSuccess from './components/Test/TestSuccess';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -57,7 +59,7 @@ export default function App() {
     // <Navbar></Navbar>
 
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="U07">
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false }} />
@@ -98,6 +100,7 @@ export default function App() {
         <Stack.Screen name="T08" component={Test_8} options={{ headerShown: false }} />
         <Stack.Screen name="T09" component={Test_9} options={{ headerShown: false }} />
         <Stack.Screen name="T10" component={Test_10} options={{ headerShown: false }} />
+        <Stack.Screen name="TestSuccess" component={TestSuccess} options={{ headerShown: false }} />
         
         <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
 

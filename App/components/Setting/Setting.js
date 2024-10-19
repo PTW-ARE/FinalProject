@@ -19,7 +19,9 @@ const Setting = ({ navigation }) => {
                         Settings
                     </StyledText>
 
-                    <StyledTouchableOpacity className="bg-blue-500 py-3 px-8 rounded-full mb-4">                        
+                    <StyledTouchableOpacity className="bg-blue-500 py-3 px-8 rounded-full mb-4"
+                        onPress={() => navigation.navigate('Profile')}
+                    >
                         <StyledText className="text-white text-xl font-semibold text-center">
                             โปรไฟล์
                         </StyledText>
@@ -32,7 +34,7 @@ const Setting = ({ navigation }) => {
                             ออกจากระบบ
                         </StyledText>
                     </StyledTouchableOpacity>
-                    
+
                 </StyledView>
             </ScrollView>
         </StyledView>

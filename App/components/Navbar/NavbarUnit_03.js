@@ -27,7 +27,6 @@ const NavbarUnit_03 = ({ navigation = useNavigation() }) => {
   }, []);
 
   const handleUnitChange = (unitID) => {
-    setSelectedUnit(unitID);
     setDropdownVisible(false); 
     navigation.navigate(unitID); 
   };

@@ -10,9 +10,10 @@ const StyledText = styled(Text);
 const StyledTouchableOpacity = styled(TouchableOpacity);
 const StyledImage = styled(Image);
 
-const Profile = ({ navigation }) => {
+const Profile = ({  navigation }) => {
 
     const [customers, setCustomers] = useState([]);
+    
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
@@ -42,30 +43,25 @@ const Profile = ({ navigation }) => {
 
                 <StyledView className='bg-white h-2/5 w mx-4 mt-2 rounded-xl'>
                     <StyledView>
-                        {customers
-                            .filter((customer) => customer.CustomerID === 'C03')
-                            .map((customer) => (
-                                <StyledView key={customer.CustomerID}>
-                                    <StyledText className='text-black text-lg my-3 pl-4'>
-                                        Username :     {customer.UserName}
-                                    </StyledText>
-                                    <StyledText className='text-black text-lg my-3 pl-4'>
-                                        Firstname :     {customer.FirstName}
-                                    </StyledText>
-                                    <StyledText className='text-black text-lg my-3 pl-4'>
-                                        Lastname :     {customer.LastName}
-                                    </StyledText>
-                                    <StyledText className='text-black text-lg my-3 pl-4'>
-                                        Email :             {customer.Email}
-                                    </StyledText>
-                                </StyledView>
-                            ))}
+                        <StyledText className='text-black text-lg my-3 pl-4'>
+                            Username : 
+                        </StyledText>
+                        <StyledText className='text-black text-lg my-3 pl-4'>
+                            Firstname : 
+                        </StyledText>
+                        <StyledText className='text-black text-lg my-3 pl-4'>
+                            Lastname : 
+                        </StyledText>
+                        <StyledText className='text-black text-lg my-3 pl-4'>
+                            Email : 
+                        </StyledText>
                     </StyledView>
                 </StyledView>
+                
                 <StyledView className='bg-white h-1/4 w mx-4 mt-5 rounded-xl'>
                     <StyledView>
-                        <StyledText className='text-xl font-bold text-center mt-4'>
-                            คะแนนแบบทดสอบที่ได้
+                        <StyledText className='text-lg font-bold text-center mt-4'>
+                            คะแนนแบบทดสอบที่ทำได้สูงสุด
                         </StyledText>
                     </StyledView>
                     {customers
@@ -89,9 +85,9 @@ const Profile = ({ navigation }) => {
                             }
 
                             return (
-                                <StyledView key={customer.CustomerID} className="flex-row items-center">
+                                <StyledView key={customer.CustomerID}>
 
-                                    <StyledText className={`text-lg my-3 text-center ${scoreColor}`}>
+                                    <StyledText className={`text-2xl font-bold my-3 mr-3 text-center ${scoreColor}`}>
                                         {customer.TestScore} - {statusText}
                                     </StyledText>
                                 </StyledView>
@@ -101,23 +97,12 @@ const Profile = ({ navigation }) => {
             </StyledView>
 
             <StyledTouchableOpacity
-                className="mt-2 items-center"
+                className="mt-8 items-center"
                 onPress={() => {
                     navigation.navigate('C_Part06');
                 }}>
 
                 <StyledText className="text-white bg-red-700 text-lg font-bold p-2 rounded-full w-2/5 text-center">
-                    ออกจากระบบ
-                </StyledText>
-            </StyledTouchableOpacity>
-
-            <StyledTouchableOpacity
-                className="mt-4 items-center"
-                onPress={() => {
-                    navigation.navigate('C_Part06');
-                }}>
-
-                <StyledText className="text-white bg-red-500 text-lg font-bold p-2 rounded-full w-2/5 text-center">
                     ลบบัญชี
                 </StyledText>
             </StyledTouchableOpacity>

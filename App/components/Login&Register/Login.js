@@ -32,8 +32,12 @@ const Login = ({ }) => {
         Password,
       });
 
+      console.log(response.data);
+
       if (response.data.result) {
+
         setAuthToken(response.data.token);
+        
         navigation.navigate('Menu');
       } else {
         Alert.alert('Login Failed', response.data.message || 'Unknown error'); // ป้องกันการแสดงข้อความ undefined
@@ -48,7 +52,7 @@ const Login = ({ }) => {
 
 
   const handleRegister = () => {
-    // นำทางไปยังหน้า Menu เมื่อเข้าสู่ระบบสำเร็จ
+  
     navigation.navigate('Register');
   };
 

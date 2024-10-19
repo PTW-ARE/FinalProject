@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity,BackHandler,Alert } from 'react-native';
 import { styled } from 'nativewind';
-import NavbarPostTest from '../Navbar/NavberPostTest';
+import NavbarPostTest from '../Navbar/NavbarPostTest';
 import axios from "axios";
 import { CommonActions } from '@react-navigation/native';
 
@@ -30,6 +30,27 @@ const Test_10 = ({ route, navigation }) => {
         return unsubscribe;
     }, [navigation]);
 
+    useEffect(() => {
+        const backAction = () => {
+            // แสดงข้อความเตือนเมื่อกดย้อนกลับ
+            Alert.alert(
+                "คำเตือน",
+                "ไม่สามารถย้อนกลับไปทำข้อเก่าได้",
+                [
+                    { text: "ตกลง", onPress: () => {} } // ให้แสดงแค่ข้อความเตือนและไม่ทำอะไร
+                ]
+            );
+            return true; // ปิดกั้นการกดย้อนกลับ
+        };
+
+        const backHandler = BackHandler.addEventListener(
+            "hardwareBackPress",
+            backAction
+        );
+
+        return () => backHandler.remove(); // ลบ event เมื่อออกจากหน้าจอ
+    }, []);
+
     const handleChoice = (choice, isCorrect) => {
         if (selectedChoice !== choice) {
             setSelectedChoice(choice);
@@ -44,27 +65,44 @@ const Test_10 = ({ route, navigation }) => {
 
     const handleFinish = () => {
 
+        if (selectedChoice === null) {
+            Alert.alert("คำเตือน", "กรุณาเลือกคำตอบก่อนไปข้อต่อไป", [
+                { text: "ตกลง", onPress: () => {} }
+            ]);
+            return; // หยุดการทำงานถ้าไม่มีการเลือกคำตอบ
+        }
+
         const totalScore = Object.values(scores).reduce((sum, score) => sum + score, 0);
 
         console.log("Total score to be sent:", totalScore);
 
         axios.post("http://192.168.0.149:8000/saveTestScore", { score: totalScore })
             .then((response) => {
+
                 console.log("Score saved successfully!", response.data);
 
-                navigation.navigate('Profile');
-            })
-            .catch(error => {
-                console.error("There was an error saving the score!", error);
+
                 navigation.dispatch(
                     CommonActions.reset({
                         index: 0,
                         routes: [
-                            { name: 'Profile', params: { scores } } // ปรับตามหน้าที่จะไป
+                            { name: 'TestSuccess', params: { totalScore } } // ส่งค่า totalScore
+                        ],
+                    })
+                );
+            })
+            .catch(error => {
+                
+                navigation.dispatch(
+                    CommonActions.reset({
+                        index: 0,
+                        routes: [
+                            { name: 'TestSuccess', params: { totalScore } } // ส่งค่า totalScore
                         ],
                     })
                 );
             });
+            
     };
 
 
@@ -73,9 +111,9 @@ const Test_10 = ({ route, navigation }) => {
 
             <NavbarPostTest navigation={navigation} />
 
-            <StyledView>
-                <StyledText className='bg-yellow-500 p-2 mx-10 mt-5 mb-1 text-white text-center text-2xl font-bold rounded-xl'>
-                    แบบทดสอบหลังเรียน
+            <StyledView >
+                <StyledText className='bg-yellow-500 p-2 mx-6 mt-5 mb-1 text-white text-center text-2xl font-bold rounded-xl'>
+                    แบบทดสอบหลังเรียนข้อที่10
                 </StyledText>
             </StyledView>
 

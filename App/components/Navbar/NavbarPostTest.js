@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, TouchableOpacity, Image, Modal, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, TouchableOpacity, Image ,Alert} from 'react-native';
 import { styled } from 'nativewind';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
@@ -6,10 +6,11 @@ import axios from "axios";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
+const StyledTouchableOpacity = styled(TouchableOpacity);
 
 const NavbarPostTest = ({ navigation = useNavigation() }) => {
   const [units, setUnits] = useState([]);
-  const [selectedUnit, setSelectedUnit] = useState('U07');
+  const [selectedUnit] = useState('U07');
 
   useEffect(() => {
     // ดึงข้อมูลจาก API
@@ -22,9 +23,41 @@ const NavbarPostTest = ({ navigation = useNavigation() }) => {
       });
   }, []);
 
+  const handleExit = () => {
+    // แสดงการยืนยัน
+    Alert.alert(
+      "คำเตือน",
+      "ออกจากการทำแบบทดสอบหรือไม่",
+      [
+        {
+          text: "ยกเลิก",
+          style: "cancel"
+        },
+        {
+          text: "ตกลง",
+          onPress: () => {
+
+            navigation.navigate('U07');
+          }
+        }
+      ]
+    );
+  };
+
   return (
     <StyledView className="bg-green-600 p-4 rounded-b-3xl flex-row justify-between pt-8">
-      <StyledView></StyledView>
+      
+      <StyledView>
+        <StyledTouchableOpacity
+          onPress={() => {
+            handleExit()
+          }}>
+          <StyledText className='text-white text-lg pt-1'>
+            ออก
+          </StyledText>
+        </StyledTouchableOpacity>
+      </StyledView>
+
       <StyledView>
         {units
           .filter((unit) => unit.UnitID === selectedUnit)
@@ -34,7 +67,13 @@ const NavbarPostTest = ({ navigation = useNavigation() }) => {
             </StyledText>
           ))}
       </StyledView>
-      <StyledView></StyledView>
+
+      <StyledView>
+        <StyledText className='text-green-600'>
+          ...........
+        </StyledText>
+      </StyledView>
+
     </StyledView>
   );
 };

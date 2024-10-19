@@ -176,7 +176,7 @@ app.post("/login", (req, res) => {
 
 
             if (results.length > 0) {
-                // สร้าง token
+                
                 const token = jwt.sign({ UserName }, "MySecretKey", { expiresIn: '1h' });
                 return res.status(200).json({
                     result: true,

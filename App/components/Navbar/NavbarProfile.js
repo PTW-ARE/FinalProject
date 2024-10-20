@@ -2,7 +2,7 @@ import { View, Text, ScrollView, TouchableOpacity, Image, Modal, TouchableWithou
 import { styled } from 'nativewind';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import axios from "axios";
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -15,23 +15,23 @@ const NavbarProfile = ({ navigation = useNavigation() }) => {
   };
 
   return (
-    <StyledView className="bg-blue-600 p-4 rounded-b-3xl flex-row justify-between pt-8">
+    <StyledView className="bg-blue-800 p-4 rounded-b-3xl flex-row justify-between pt-8">
       <StyledView>
-        <StyledTouchableOpacity
+        <StyledTouchableOpacity className='pt-2'
           onPress={() => {
             handleExit()
           }}>
-          <StyledText className='text-white text-base pt-2'>
-            ย้อนกลับ
-          </StyledText>
+
+          <Icon name="arrow-back" size={25} color="#f8fafc" />
+
         </StyledTouchableOpacity>
       </StyledView>
       <StyledView>
-        
-            <StyledText className="text-white text-3xl font-bold flex-col mr-16 justify-center items-center">
-              Profile
-            </StyledText>
-          
+
+        <StyledText className="text-white text-3xl font-bold flex-col mr-7 justify-center items-center">
+          Profile
+        </StyledText>
+
       </StyledView>
       <StyledView></StyledView>
     </StyledView>

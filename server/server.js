@@ -68,14 +68,28 @@ app.get('/customer', (req, res) => {
     });
 });
 
-app.post('/saveTestScore', (req, res) => {
-    const { score } = req.body;
+app.get('/customer/profile/:userName', (req, res) => {
+    const {userName} = req.params
+    console.log(userName)
+    const sqlSelect ='SELECT * FROM customer WHERE UserName = ?';
+    pool.query(sqlSelect, [userName], (error, results) => {
+        console.log(results)
+        if (error) {
+            return res.status(500).json({ error });
+        }
+        res.json(results);
+        
+    });
+});
+
+app.post('/saveTestScore/:UserName', (req, res) => {
     
-    const customerID = 'C03'; 
+    const { score } = req.body;
+    const { UserName } = req.params
 
     // ค้นหาคะแนนเก่าในฐานข้อมูล
-    const sqlSelect = "SELECT TestScore FROM customer WHERE CustomerID = ?";
-    pool.query(sqlSelect, [customerID], (error, results) => {
+    const sqlSelect = "SELECT TestScore FROM customer WHERE UserName = ?";
+    pool.query(sqlSelect, [UserName], (error, results) => {
         if (error) {
             console.error("Error during retrieving old test score: ", error);
             return res.status(500).json({
@@ -97,8 +111,8 @@ app.post('/saveTestScore', (req, res) => {
         }
 
         // อัปเดตคะแนนใหม่ในฐานข้อมูล
-        const sqlUpdate = "UPDATE customer SET TestScore = ? WHERE CustomerID = ?";
-        pool.query(sqlUpdate, [score, customerID], (error, results) => {
+        const sqlUpdate = "UPDATE customer SET TestScore = ? WHERE UserName = ?";
+        pool.query(sqlUpdate, [score, UserName], (error, results) => {
             if (error) {
                 console.error("Error during updating test score: ", error);
                 return res.status(500).json({
@@ -196,16 +210,16 @@ app.post("/login", (req, res) => {
 });
 
 app.post("/register", (req, res) => {
-    const { UserName, Password, FirstName, LastName, BirthDate, Email } = req.body;
+    const { UserName, Password, FirstName, LastName, Email } = req.body;
 
-    if (!UserName || !Password || !FirstName || !LastName || !BirthDate || !Email) {
+    if (!UserName || !Password || !FirstName || !LastName ||  !Email) {
         return res.status(400).json({
             result: false,
             message: "กรุณากรอกข้อมูลให้ครบทุกช่อง",
         });
     }
 
-    // ค้นหา CustomerID ที่มีค่าสูงสุดในฐานข้อมูล
+    
     pool.query("SELECT MAX(CustomerID) AS maxCustomerID FROM customer", (error, results) => {
         if (error) {
             console.error("Error during retrieving max CustomerID: ", error);
@@ -215,7 +229,7 @@ app.post("/register", (req, res) => {
             });
         }
 
-        // สร้าง CustomerID ใหม่โดยเพิ่มลำดับหมายเลขต่อท้าย
+        
         let CustomerID = "C01";
         if (results[0].maxCustomerID) {
             const maxCustomerID = results[0].maxCustomerID;
@@ -223,10 +237,10 @@ app.post("/register", (req, res) => {
             CustomerID = "C" + String(maxNumber).padStart(2, "0");
         }
 
-        // แทรกข้อมูลลงในฐานข้อมูลพร้อม CustomerID ที่สร้างขึ้นใหม่
-        const sql = "INSERT INTO customer (CustomerID, UserName, Password, FirstName, LastName, BirthDate, Email) VALUES (?, ?, MD5(?), ?, ?, ?, ?)";
+        
+        const sql = "INSERT INTO customer (CustomerID, UserName, Password, FirstName, LastName, Email) VALUES (?, ?, MD5(?), ?, ?, ?)";
 
-        pool.query(sql, [CustomerID, UserName, Password, FirstName, LastName, BirthDate, Email], (error, results) => {
+        pool.query(sql, [CustomerID, UserName, Password, FirstName, LastName, Email], (error, results) => {
             if (error) {
                 console.error("Error during registration: ", error);
                 return res.status(500).json({
@@ -240,6 +254,19 @@ app.post("/register", (req, res) => {
             });
         });
     });
+});
+
+app.delete('/customer/profile/:CustomerID', (req, res) => {
+    const {CustomerID} = req.params
+    console.log(CustomerID)
+    pool.query('DELETE FROM customer WHERE CustomerID = ?', [CustomerID] ,(error, results) => {
+        if (error) {
+            return res.status(500).json({ error });
+        }
+        res.json(results);
+    });
+
+    res.json({ message: 'Customer deleted successfully' });
 });
 
 

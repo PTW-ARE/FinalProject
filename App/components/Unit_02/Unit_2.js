@@ -33,8 +33,8 @@ const Unit_2 = ({ navigation }) => {
 
             <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 20 }}>
 
-                <StyledView className='mb-2 w-3/4 rounded-full'>
-                    <StyledText className="text-2xl font-bold text-black p-2 text-left">
+                <StyledView className='bg-teal-500 mb-2 w-3/4 rounded-full'>
+                    <StyledText className="text-2xl font-bold text-white p-2 text-center">
                         Syntax(ไวยากรณ์)
                     </StyledText>
                 </StyledView>
@@ -55,11 +55,11 @@ const Unit_2 = ({ navigation }) => {
                     </StyledView>
                 </StyledView>
                 
-                <StyledView className='bg-green-200 mb-2 w-10/12 rounded-full'>
+                <StyledView className='bg-teal-500 mb-2 w-10/12 rounded-full'>
                 {parts
                     .filter((part) => part.PartID === 'P04')
                     .map((part) => (
-                        <StyledText key={part.PartID} className="text-xl font-bold text-black p-2 text-center">
+                        <StyledText key={part.PartID} className="text-xl font-bold text-white p-2 text-center">
                             {part.PartName}
                         </StyledText>
                     ))}
@@ -91,14 +91,14 @@ const Unit_2 = ({ navigation }) => {
                     </StyledView>
                 </StyledView>
                 
-                <StyledView className="flex-row justify-end mt-3">
+                <StyledView className="flex-row justify-end mt-3 ">
 
-                    <StyledTouchableOpacity className="bg-blue-500 p-3 rounded-full w-2/5 items-center"
+                    <StyledTouchableOpacity className="bg-blue-600 p-3 rounded-full shadow-md w-2/5 items-center"
                         onPress={() => {
                             navigation.navigate('U02_2');
                         }}
                     >
-                        <StyledText className="text-white text-base font-bold">
+                        <StyledText className="text-white text-base font-bold ">
                             หน้าต่อไป
                         </StyledText>
                     </StyledTouchableOpacity>

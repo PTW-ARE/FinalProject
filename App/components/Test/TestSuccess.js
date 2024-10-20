@@ -57,7 +57,7 @@ const TestSuccess = ({ route, navigation }) => {
             <NavbarCriteria navigation={navigation} />
 
             <StyledView>
-                <StyledText className='bg-yellow-500 px-2 py-5 mx-10 mt-10 mb-5 text-white text-center text-2xl font-bold rounded-xl'>
+                <StyledText className='bg-blue-800 px-2 py-5 mx-10 mt-10 mb-5 text-white text-center text-2xl font-bold rounded-xl'>
                     แบบทดสอบหลังเรียน
                 </StyledText>
             </StyledView>
@@ -85,7 +85,7 @@ const TestSuccess = ({ route, navigation }) => {
                         navigation.navigate('Profile');
                     }}>
 
-                    <StyledText className="text-white bg-blue-500 text-lg font-bold p-3 rounded-full w-80 text-center">
+                    <StyledText className="text-white bg-blue-600 shadow-md text-lg font-bold p-3 rounded-full w-56 text-center">
                         ไปยังหน้าโปรไฟล์
                     </StyledText>
                 </StyledTouchableOpacity>

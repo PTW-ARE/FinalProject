@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import { Picker } from '@react-native-picker/picker';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -38,16 +39,16 @@ const NavbarCriteria = ({ navigation = useNavigation() }) => {
   };
 
   return (
-    <StyledView className="bg-green-600 p-4 rounded-b-3xl flex-row justify-between pt-8">
+    <StyledView className="bg-green-800 p-4 rounded-b-3xl flex-row justify-between pt-8">
 
       <StyledView>
-        <StyledTouchableOpacity
+        <StyledTouchableOpacity className='pt-2'
           onPress={() => {
             handleExit()
           }}>
-          <StyledText className='text-white text-lg pt-1'>
-            Menu
-          </StyledText>
+
+          <Icon name="home" size={25} color="#f8fafc" />
+
         </StyledTouchableOpacity>
       </StyledView>
 
@@ -55,7 +56,7 @@ const NavbarCriteria = ({ navigation = useNavigation() }) => {
         {units
           .filter((unit) => unit.UnitID === selectedUnit)
           .map((unit) => (
-            <StyledText key={unit.UnitID} className="text-white text-3xl font-bold mr-9 flex-col justify-center items-center">
+            <StyledText key={unit.UnitID} className="text-white text-3xl font-bold mr-4 flex-col justify-center items-center">
               {unit.UnitName}
             </StyledText>
           ))}
@@ -69,7 +70,7 @@ const NavbarCriteria = ({ navigation = useNavigation() }) => {
         >
           <StyledImage source={require('./asset/BergerMenu.png')} className=" w-5 h-5" />
         </StyledTouchableOpacity>
-        
+
         <Modal
           transparent={true}
           visible={dropdownVisible}

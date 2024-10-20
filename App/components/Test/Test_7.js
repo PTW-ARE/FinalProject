@@ -92,7 +92,7 @@ const Test_7 = ({ route, navigation }) => {
             <NavbarPostTest navigation={navigation} />
 
             <StyledView>
-                <StyledText className='text-white text-center text-2xl font-bold bg-yellow-500 p-2 mx-10 mt-5 mb-1 rounded-xl'>
+                <StyledText className='text-white text-center text-2xl font-bold bg-blue-800 p-2 mx-10 mt-5 mb-1 rounded-xl'>
                     แบบทดสอบหลังเรียนข้อที่7
                 </StyledText>
             </StyledView>
@@ -118,8 +118,8 @@ const Test_7 = ({ route, navigation }) => {
                 </StyledView>
 
                 <StyledView className='mt-5'>
-                    <StyledTouchableOpacity onPress={() => handleChoice('Choice1', true)}
-                        className={`my-4 ml-4 w-1/2 pl-4 py-2 rounded-2xl ${selectedChoice === 'Choice1' ? 'bg-violet-500' : 'bg-blue-500'}`}>
+                    <StyledTouchableOpacity onPress={() => handleChoice('Choice1', false)}
+                        className={`my-4 ml-4 w-1/2 pl-4 py-2 shadow-md rounded-2xl ${selectedChoice === 'Choice1' ? 'bg-violet-700' : 'bg-blue-700'}`}>
                         {tests
                             .filter((test) => test.TestID === selectedTest)
                             .map((test) => (
@@ -130,7 +130,7 @@ const Test_7 = ({ route, navigation }) => {
                     </StyledTouchableOpacity>
                     <StyledTouchableOpacity
                         onPress={() => handleChoice('Choice2', false)}
-                        className={`my-4 ml-4 w-1/2 pl-4 py-2 rounded-2xl ${selectedChoice === 'Choice2' ? 'bg-violet-500' : 'bg-blue-500'}`}>
+                        className={`my-4 ml-4 w-1/2 pl-4 py-2 shadow-md rounded-2xl ${selectedChoice === 'Choice2' ? 'bg-violet-700' : 'bg-blue-700'}`}>
                         {tests
                             .filter((test) => test.TestID === selectedTest)
                             .map((test) => (
@@ -140,8 +140,8 @@ const Test_7 = ({ route, navigation }) => {
                             ))}
                     </StyledTouchableOpacity>
                     <StyledTouchableOpacity
-                        onPress={() => handleChoice('Choice3', false)}
-                        className={`my-4 ml-4 w-1/2 pl-4 py-2 rounded-2xl ${selectedChoice === 'Choice3' ? 'bg-violet-500' : 'bg-blue-500'}`}>
+                        onPress={() => handleChoice('Choice3', true)}
+                        className={`my-4 ml-4 w-1/2 pl-4 py-2 shadow-md rounded-2xl ${selectedChoice === 'Choice3' ? 'bg-violet-700' : 'bg-blue-700'}`}>
                         {tests
                             .filter((test) => test.TestID === selectedTest)
                             .map((test) => (
@@ -161,7 +161,7 @@ const Test_7 = ({ route, navigation }) => {
                         handleNext()
                     }}
                 >
-                    <StyledText className="text-white text-base font-bold bg-blue-500 px-7 py-3 m-4 rounded-3xl">
+                    <StyledText className="text-white text-base font-bold shadow-md bg-blue-600 px-7 py-3 m-4 rounded-3xl">
                         ข้อต่อไป
                     </StyledText>
                 </StyledTouchableOpacity>

@@ -51,7 +51,7 @@ const C_Compiler = ({ navigation }) => {
             </StyledView>
 
             <StyledTouchableOpacity className="mt-2 mb-2 items-center" onPress={runCode}>
-                <StyledText className="text-white bg-emerald-400 text-lg font-bold p-3 rounded-full w-28 text-center">
+                <StyledText className="text-white bg-emerald-400 shadow-md text-lg  font-bold p-3 rounded-full w-28 text-center">
                     Run Code
                 </StyledText>
             </StyledTouchableOpacity>

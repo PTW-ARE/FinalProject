@@ -34,7 +34,7 @@ const Unit_1 = ({ navigation }) => {
 
             <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 20 }}>
 
-                <StyledView className='bg-yellow-500 mb-2 w-3/4 rounded-full'>
+                <StyledView className='bg-teal-500 mb-2 w-3/4 rounded-full'>
                     {parts
                         .filter((part) => part.PartID === 'P01')
                         .map((part) => (
@@ -55,7 +55,7 @@ const Unit_1 = ({ navigation }) => {
                         ))}
                 </StyledView>
 
-                <StyledView className='bg-yellow-500 mb-2 w-10/12 rounded-full'>
+                <StyledView className='bg-teal-500 mb-2 w-10/12 rounded-full'>
                     {parts
                         .filter((part) => part.PartID === 'P02')
                         .map((part) => (
@@ -100,19 +100,18 @@ const Unit_1 = ({ navigation }) => {
                             ))}
                     </StyledView>
 
-                    <StyledTouchableOpacity
-                        className="mt-4 items-center"
+                    <StyledTouchableOpacity className="mt-4 items-center "
                         onPress={() => {
                             navigation.navigate('C_Part02');
                         }}>
                             
-                        <StyledText className="text-white bg-blue-500 text-lg font-bold p-3 rounded-full w-full text-center">
+                        <StyledText className="text-white bg-blue-600 text-lg font-bold shadow-md p-3 rounded-full w-full text-center">
                             ลองรัน
                         </StyledText>
                     </StyledTouchableOpacity>
                 </StyledView>
 
-                <StyledView className='bg-blue-500 mb-2 w-3/4 rounded-full'>
+                <StyledView className='bg-teal-500 mb-2 w-3/4 rounded-full'>
                     {parts
                         .filter((part) => part.PartID === 'P03')
                         .map((part) => (
@@ -135,7 +134,7 @@ const Unit_1 = ({ navigation }) => {
 
                 <StyledView className="flex-row justify-end mt-3">
 
-                    <StyledTouchableOpacity className="bg-red-500 p-3 rounded-full w-2/5 items-center"
+                    <StyledTouchableOpacity className="bg-amber-600 p-3 rounded-full shadow-md w-2/5 items-center"
                         onPress={() => {
                             navigation.navigate('U02');
                         }}

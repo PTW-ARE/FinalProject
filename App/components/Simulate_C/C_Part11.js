@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { styled } from 'nativewind';
-import NavbarCompiler from '../Navbar/NavbarCompiler';
+import NavbarCPart from '../Navbar/NavbarCPart';
 import axios from "axios";
 
 const StyledView = styled(View);
@@ -44,7 +44,7 @@ const C_Part11 = ({ navigation }) => {
         <StyledView className="flex-1 bg-gray-100">
 
 
-            <NavbarCompiler navigation={navigation}></NavbarCompiler>
+            <NavbarCPart navigation={navigation}></NavbarCPart>
 
             <StyledView className="mt-5 mx-2 p-4 bg-stone-200 rounded-3xl shadow-sm">
                 <StyledText className="text-lg font-bold text-black mb-2">
@@ -66,7 +66,7 @@ const C_Part11 = ({ navigation }) => {
             </StyledView>
 
             <StyledTouchableOpacity className="mt-2 mb-2 items-center" onPress={runCode}>
-                <StyledText className="text-white bg-blue-500 text-lg font-bold p-3 rounded-full w-28 text-center">
+                <StyledText className="text-white bg-emerald-500 shadow-md text-lg font-bold p-3 rounded-full w-28 text-center">
                     ลองรัน
                 </StyledText>
             </StyledTouchableOpacity>

@@ -10,9 +10,10 @@ const StyledImage = styled(Image);
 
 const Navbar = ({ navigation = useNavigation() }) => {
 
+  
   return (
     /// bg-กำหนดภายหลัง 
-    <StyledView className="bg-red-700 p-4 rounded-b-3xl flex-row justify-between pt-8">
+    <StyledView className="bg-blue-800 p-4 rounded-b-3xl flex-row justify-between pt-8">
       <StyledView></StyledView>
 
       <StyledText className="text-white text-3xl font-bold flex-col ml-3 justify-center items-center">

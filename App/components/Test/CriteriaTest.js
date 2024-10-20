@@ -12,7 +12,7 @@ const CriteriaTest = ({ navigation }) => {
         // แสดงการยืนยัน
         Alert.alert(
             "ยืนยันเข้าทำแบบทดสอบหรือไม่?",
-            "หากยังไม่ได้ศึกษาบทเรียน ควรกลับไปศึกษาก่อนแบบทดสอบ",
+            "หากยังไม่ได้ศึกษาบทเรียน ควรกลับไปศึกษาก่อนทำแบบทดสอบ",
             [
                 {
                     text: "ยกเลิก",
@@ -35,7 +35,7 @@ const CriteriaTest = ({ navigation }) => {
             <NavbarCriteria navigation={navigation} />
 
             <StyledView>
-                <StyledText className='bg-yellow-500 px-2 py-5 mx-10 mt-10 mb-5 text-white text-center text-2xl font-bold rounded-xl'>
+                <StyledText className='bg-blue-800 px-2 py-5 mx-10 mt-10 mb-5 text-white text-center text-2xl font-bold rounded-xl'>
                     แบบทดสอบหลังเรียน
                 </StyledText>
             </StyledView>
@@ -62,7 +62,7 @@ const CriteriaTest = ({ navigation }) => {
                     className="mt-9 items-center"
                     onPress={handleStartTest}
                 >
-                    <StyledText className="text-white bg-red-500 text-lg font-bold p-3 rounded-full w-80 text-center">
+                    <StyledText className="text-white bg-red-700 shadow-md text-lg font-bold p-3 rounded-full w-80 text-center">
                         เริ่มทำแบบทดสอบ
                     </StyledText>
                 </StyledTouchableOpacity>

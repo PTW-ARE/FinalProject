@@ -15,7 +15,7 @@ const Menu = ({ navigation }) => {
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
-            
+
             axios.get("http://192.168.0.149:8000/units")
                 .then((response) => {
                     setUnits(response.data);
@@ -28,24 +28,23 @@ const Menu = ({ navigation }) => {
         // Cleanup listener เมื่อ component ถูก unmount
         return unsubscribe;
     }, [navigation]);
-    
+
 
     return (
         <SafeAreaView key={units.length} className="flex-auto bg-white flex-col">
             <Navbar navigation={navigation} />
 
             <StyledView className="ml-8 mt-10 mb-1">
-                <StyledText className="text-black text-2xl font-bold text-blue-700">
+                <StyledText className="text-2xl font-bold text-blue-700">
                     บทเรียน
                 </StyledText>
             </StyledView>
 
-            <StyledView className="flex bg-white items-center py-7 rounded-3xl mx-3">
+            <StyledView className="bg-white mx-auto w-auto rounded-2xl drop-shadow-md m-2 p-8 ">
                 {units.length > 0 ? (
                     units.map((unit) => (
-                        <StyledTouchableOpacity
+                        <StyledTouchableOpacity className="bg-rose-700 p-3 mb-4 w-56 rounded-full shadow-md mx-auto"
                             key={unit.UnitID}
-                            className="bg-blue-600 p-3 mb-4 w-80 rounded-full shadow-md"
                             onPress={() => {
                                 if (unit.UnitID === 'U01') {
                                     navigation.navigate('U01');
@@ -61,12 +60,12 @@ const Menu = ({ navigation }) => {
                                     navigation.navigate('U06');
                                 } else if (unit.UnitID === 'U07') {
                                     navigation.navigate('U07');
-                                }else {
+                                } else {
                                     navigation.navigate('Unit_Default', { unitId: unit.UnitID });
                                 }
                             }}
                         >
-                            <StyledText className="text-white text-xl font-bold text-center ">
+                            <StyledText className="text-white text-xl text-sm font-bold text-center ">
                                 {unit.UnitName}
                             </StyledText>
                         </StyledTouchableOpacity>

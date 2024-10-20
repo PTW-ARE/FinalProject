@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import { Picker } from '@react-native-picker/picker';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -33,33 +34,33 @@ const NavbarCompiler = ({ navigation = useNavigation() }) => {
   };
 
   const handleUnitChange = (unitID) => {
-    setDropdownVisible(false); 
-    navigation.navigate(unitID); 
+    setDropdownVisible(false);
+    navigation.navigate(unitID);
   };
 
   return (
-    <StyledView className="bg-red-700 p-4 rounded-b-3xl flex-row justify-between pt-8">
+    <StyledView className="bg-violet-800 p-4 rounded-b-3xl flex-row justify-between pt-8">
       <StyledView>
-        <StyledTouchableOpacity
+        <StyledTouchableOpacity className='pt-2'
           onPress={() => {
             handleExit()
           }}>
-          <StyledText className='text-white text-lg pt-1'>
-            Menu
-          </StyledText>
+
+          <Icon name="home" size={25} color="#f8fafc" />
+
         </StyledTouchableOpacity>
       </StyledView>
       <StyledView>
         {units
           .filter((unit) => unit.UnitID === selectedUnit)
           .map((unit) => (
-            <StyledText key={unit.UnitID} className="text-white text-3xl font-bold flex-col mr-8 justify-center items-center">
+            <StyledText key={unit.UnitID} className="text-white text-3xl font-bold flex-col mr-3 justify-center items-center">
               {unit.UnitName}
             </StyledText>
           ))}
       </StyledView>
       <StyledTouchableOpacity
-        onPress={() => setDropdownVisible(!dropdownVisible)} 
+        onPress={() => setDropdownVisible(!dropdownVisible)}
         className={"pt-3"}
       >
         <StyledImage source={require('./asset/BergerMenu.png')} className="w-6 h-6" />
@@ -69,20 +70,20 @@ const NavbarCompiler = ({ navigation = useNavigation() }) => {
       <Modal
         transparent={true}
         visible={dropdownVisible}
-        onRequestClose={() => setDropdownVisible(false)} 
+        onRequestClose={() => setDropdownVisible(false)}
       >
         <TouchableWithoutFeedback onPress={() => setDropdownVisible(false)}>
-          <StyledView className="flex-1 justify-center items-center bg-transparent"> 
+          <StyledView className="flex-1 justify-center items-center bg-transparent">
             <TouchableWithoutFeedback>
               <StyledView className="bg-blue-600 rounded-2xl p-3">
-              <StyledText className="text-2xl text-white font-bold text-center">เลือกบทเรียน</StyledText>
+                <StyledText className="text-2xl text-white font-bold text-center">เลือกบทเรียน</StyledText>
                 <Picker
                   selectedValue={selectedUnit}
-                  style={{ height: 150, width: 250,color: 'white' }}
+                  style={{ height: 150, width: 250, color: 'white' }}
                   onValueChange={(itemValue) => handleUnitChange(itemValue)}
                 >
                   {units.map((unit) => (
-                    <Picker.Item key={unit.UnitID} label={unit.UnitName} value={unit.UnitID}/>
+                    <Picker.Item key={unit.UnitID} label={unit.UnitName} value={unit.UnitID} />
                   ))}
                 </Picker>
                 <StyledTouchableOpacity onPress={() => setDropdownVisible(false)} className="">

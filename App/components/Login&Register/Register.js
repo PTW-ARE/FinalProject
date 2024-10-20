@@ -39,13 +39,8 @@ const Register = () => {
 
 
     const handleRegister = async () => {
-        if (!UserName || !FirstName || !LastName || !BirthDate || !Password || !Email) {
+        if (!UserName || !FirstName || !LastName  || !Password || !Email) {
             Alert.alert('คำเตือน', 'กรุณากรอกข้อมูลทุกช่อง');
-            return;
-        }
-
-        if (!isValidDate(BirthDate)) {
-            Alert.alert('คำเตือน', 'กรุณากรอกวันเกิดในรูปแบบ วัน/เดือน/ปี (เช่น 31/12/2024)');
             return;
         }
 
@@ -56,7 +51,6 @@ const Register = () => {
             Password,
             FirstName,
             LastName,
-            BirthDate,
             Email
         });
 
@@ -105,18 +99,6 @@ const Register = () => {
                 </StyledView>
 
                 <StyledView className="w-3/4 mb-4">
-                    <StyledText className="text-blue-500 mb-1">วันเกิด (วัน/เดือน/ปี(ค.ศ.))</StyledText>
-                    <StyledTextInput
-                        className="p-3 bg-blue-100 rounded-lg"
-                        placeholder="DD/MM/YYYY"
-                        placeholderTextColor="#999"
-                        value={BirthDate}
-                        onChangeText={setBirthDate}
-                    />
-                </StyledView>
-
-
-                <StyledView className="w-3/4 mb-4">
                     <StyledText className="text-blue-500 mb-1">ชื่อผู้ใช้</StyledText>
                     <StyledTextInput
                         className="p-3 bg-blue-100 rounded-lg"
@@ -151,7 +133,7 @@ const Register = () => {
                 </StyledView>
 
                 <StyledTouchableOpacity
-                    className="w-3/4 p-3 bg-orange-500 rounded-lg items-center"
+                    className="w-3/4 p-3 bg-orange-500 shadow-md rounded-lg items-center"
                     onPress={handleRegister}
                 >
                     <StyledText className="text-white font-bold text-lg">

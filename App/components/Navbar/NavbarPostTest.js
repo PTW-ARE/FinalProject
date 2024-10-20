@@ -1,8 +1,9 @@
-import { View, Text, TouchableOpacity, Image ,Alert} from 'react-native';
+import { View, Text, TouchableOpacity, Image, Alert } from 'react-native';
 import { styled } from 'nativewind';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -45,33 +46,31 @@ const NavbarPostTest = ({ navigation = useNavigation() }) => {
   };
 
   return (
-    <StyledView className="bg-green-600 p-4 rounded-b-3xl flex-row justify-between pt-8">
-      
+    <StyledView className="bg-green-800 p-4 rounded-b-3xl flex-row justify-between pt-8">
+
       <StyledView>
-        <StyledTouchableOpacity
-          onPress={() => {
-            handleExit()
-          }}>
-          <StyledText className='text-white text-lg pt-1'>
-            ออก
-          </StyledText>
-        </StyledTouchableOpacity>
+
       </StyledView>
 
       <StyledView>
         {units
           .filter((unit) => unit.UnitID === selectedUnit)
           .map((unit) => (
-            <StyledText key={unit.UnitID} className="text-white text-3xl font-bold flex-col justify-center items-center">
+            <StyledText key={unit.UnitID} className="text-white text-3xl ml-5 font-bold flex-col justify-center items-center">
               {unit.UnitName}
             </StyledText>
           ))}
       </StyledView>
 
       <StyledView>
-        <StyledText className='text-green-600'>
-          ...........
-        </StyledText>
+        <StyledTouchableOpacity className='pt-2'
+          onPress={() => {
+            handleExit()
+          }}>
+
+          <Icon name="exit-to-app" size={30} color="#f8fafc" />
+
+        </StyledTouchableOpacity>
       </StyledView>
 
     </StyledView>

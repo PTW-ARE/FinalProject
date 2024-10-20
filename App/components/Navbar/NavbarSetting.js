@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { styled } from 'nativewind';
 import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -10,23 +11,30 @@ const StyledImage = styled(Image);
 
 const Navbar = ({ navigation = useNavigation() }) => {
 
+    const handleExit = () => {
+        navigation.navigate('Menu');
+    };
+
     return (
-        /// bg-กำหนดภายหลัง 
-        <StyledView className="bg-red-700 p-4 rounded-b-3xl flex-row justify-between pt-8">
 
-            {/* <StyledTouchableOpacity onPress={() => navigation.navigate('Menu')} className={"pt-3"}>
-          <StyledImage source={require('../assets/BergerMenu.png')} className="w-5 h-5"></StyledImage>
-      </StyledTouchableOpacity> */}
+        <StyledView className="bg-blue-800 p-4 rounded-b-3xl flex-row justify-between pt-8">
 
-            <StyledView></StyledView>
 
-            <StyledText className="text-white text-2xl font-bold flex-col justify-center items-center">
-                Beginning To C
-            </StyledText>
+            <StyledView>
+                <StyledTouchableOpacity className='pt-2'
+                    onPress={() => {
+                        handleExit()
+                    }}>
 
-            {/* <StyledTouchableOpacity onPress={() => navigation.navigate('Setting')} className={"pt-2"}>
-          <StyledImage source={require('../assets/setting.png')} className="w-6 h-6"></StyledImage>
-      </StyledTouchableOpacity> */}
+                    <Icon name="home" size={25} color="#f8fafc" />
+
+                </StyledTouchableOpacity>
+            </StyledView>
+            <StyledView>
+                <StyledText className="text-white text-3xl mr-9 font-bold flex-col justify-center items-center">
+                    Setting
+                </StyledText>
+            </StyledView>
 
             <StyledView></StyledView>
 

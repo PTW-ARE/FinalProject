@@ -45,70 +45,67 @@ import Test_10 from './components/Test/Test_10';
 import CriteriaTest from './components/Test/CriteriaTest';
 import Profile from './components/Profile/Profile';
 import TestSuccess from './components/Test/TestSuccess';
+import { UserProvider } from './components/UserProvider';
 
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    <UserProvider>
 
-    //<Menu></Menu>
-    //<Home></Home>
-    //<Login></Login>
-    //<Unit1></Unit1>
-    // <Navbar></Navbar>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Menu">
+          <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+          <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+          <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false }} />
+          <Stack.Screen name="Setting" component={Setting} options={{ headerShown: false }} />
+          <Stack.Screen name="C_Part02" component={C_Part02} options={{ headerShown: false }} />
+          <Stack.Screen name="C_Part04" component={C_Part04} options={{ headerShown: false }} />
+          <Stack.Screen name="C_Part06" component={C_Part06} options={{ headerShown: false }} />
+          <Stack.Screen name="C_Part10" component={C_Part10} options={{ headerShown: false }} />
+          <Stack.Screen name="C_Part11" component={C_Part11} options={{ headerShown: false }} />
+          <Stack.Screen name="C_Part13" component={C_Part13} options={{ headerShown: false }} />
+          <Stack.Screen name="C_Part14" component={C_Part14} options={{ headerShown: false }} />
+          <Stack.Screen name="C_Part17" component={C_Part17} options={{ headerShown: false }} />
+          <Stack.Screen name="C_Part19" component={C_Part19} options={{ headerShown: false }} />
+          <Stack.Screen name="C_Part21" component={C_Part21} options={{ headerShown: false }} />
+          <Stack.Screen name="C_Part23" component={C_Part23} options={{ headerShown: false }} />
+          <Stack.Screen name="C_Part24" component={C_Part24} options={{ headerShown: false }} />
 
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
-        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-        <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false }} />
-        <Stack.Screen name="Setting" component={Setting} options={{ headerShown: false }} />
-        <Stack.Screen name="C_Part02" component={C_Part02} options={{ headerShown: false }} />
-        <Stack.Screen name="C_Part04" component={C_Part04} options={{ headerShown: false }} />
-        <Stack.Screen name="C_Part06" component={C_Part06} options={{ headerShown: false }} />
-        <Stack.Screen name="C_Part10" component={C_Part10} options={{ headerShown: false }} />
-        <Stack.Screen name="C_Part11" component={C_Part11} options={{ headerShown: false }} />
-        <Stack.Screen name="C_Part13" component={C_Part13} options={{ headerShown: false }} />
-        <Stack.Screen name="C_Part14" component={C_Part14} options={{ headerShown: false }} />
-        <Stack.Screen name="C_Part17" component={C_Part17} options={{ headerShown: false }} />
-        <Stack.Screen name="C_Part19" component={C_Part19} options={{ headerShown: false }} />
-        <Stack.Screen name="C_Part21" component={C_Part21} options={{ headerShown: false }} />
-        <Stack.Screen name="C_Part23" component={C_Part23} options={{ headerShown: false }} />
-        <Stack.Screen name="C_Part24" component={C_Part24} options={{ headerShown: false }} />
+          <Stack.Screen name="U01" component={Unit_1} options={{ headerShown: false }} />
+          <Stack.Screen name="U02" component={Unit_2} options={{ headerShown: false }} />
+          <Stack.Screen name="U02_2" component={Unit_2_2} options={{ headerShown: false }} />
+          <Stack.Screen name="U03" component={Unit_3} options={{ headerShown: false }} />
+          <Stack.Screen name="U03_2" component={Unit_3_2} options={{ headerShown: false }} />
+          <Stack.Screen name="U04" component={Unit_4} options={{ headerShown: false }} />
+          <Stack.Screen name="U05" component={Unit_5} options={{ headerShown: false }} />
+          <Stack.Screen name="U05_2" component={Unit_5_2} options={{ headerShown: false }} />
+          <Stack.Screen name="U05_3" component={Unit_5_3} options={{ headerShown: false }} />
+          <Stack.Screen name="U05_4" component={Unit_5_4} options={{ headerShown: false }} />
+          <Stack.Screen name="U06" component={C_Compiler} options={{ headerShown: false }} />
 
-        <Stack.Screen name="U01" component={Unit_1} options={{ headerShown: false }} />
-        <Stack.Screen name="U02" component={Unit_2} options={{ headerShown: false }} />
-        <Stack.Screen name="U02_2" component={Unit_2_2} options={{ headerShown: false }} />
-        <Stack.Screen name="U03" component={Unit_3} options={{ headerShown: false }} />
-        <Stack.Screen name="U03_2" component={Unit_3_2} options={{ headerShown: false }} />
-        <Stack.Screen name="U04" component={Unit_4} options={{ headerShown: false }} />
-        <Stack.Screen name="U05" component={Unit_5} options={{ headerShown: false }} />
-        <Stack.Screen name="U05_2" component={Unit_5_2} options={{ headerShown: false }} />
-        <Stack.Screen name="U05_3" component={Unit_5_3} options={{ headerShown: false }} />
-        <Stack.Screen name="U05_4" component={Unit_5_4} options={{ headerShown: false }} />
-        <Stack.Screen name="U06" component={C_Compiler} options={{ headerShown: false }} />
+          <Stack.Screen name="U07" component={CriteriaTest} options={{ headerShown: false }} />
+          <Stack.Screen name="T01" component={Test_1} options={{ headerShown: false }} />
+          <Stack.Screen name="T02" component={Test_2} options={{ headerShown: false }} />
+          <Stack.Screen name="T03" component={Test_3} options={{ headerShown: false }} />
+          <Stack.Screen name="T04" component={Test_4} options={{ headerShown: false }} />
+          <Stack.Screen name="T05" component={Test_5} options={{ headerShown: false }} />
+          <Stack.Screen name="T06" component={Test_6} options={{ headerShown: false }} />
+          <Stack.Screen name="T07" component={Test_7} options={{ headerShown: false }} />
+          <Stack.Screen name="T08" component={Test_8} options={{ headerShown: false }} />
+          <Stack.Screen name="T09" component={Test_9} options={{ headerShown: false }} />
+          <Stack.Screen name="T10" component={Test_10} options={{ headerShown: false }} />
+          <Stack.Screen name="TestSuccess" component={TestSuccess} options={{ headerShown: false }} />
 
-        <Stack.Screen name="U07" component={CriteriaTest} options={{ headerShown: false }} />
-        <Stack.Screen name="T01" component={Test_1} options={{ headerShown: false }} />
-        <Stack.Screen name="T02" component={Test_2} options={{ headerShown: false }} />
-        <Stack.Screen name="T03" component={Test_3} options={{ headerShown: false }} />
-        <Stack.Screen name="T04" component={Test_4} options={{ headerShown: false }} />
-        <Stack.Screen name="T05" component={Test_5} options={{ headerShown: false }} />
-        <Stack.Screen name="T06" component={Test_6} options={{ headerShown: false }} />
-        <Stack.Screen name="T07" component={Test_7} options={{ headerShown: false }} />
-        <Stack.Screen name="T08" component={Test_8} options={{ headerShown: false }} />
-        <Stack.Screen name="T09" component={Test_9} options={{ headerShown: false }} />
-        <Stack.Screen name="T10" component={Test_10} options={{ headerShown: false }} />
-        <Stack.Screen name="TestSuccess" component={TestSuccess} options={{ headerShown: false }} />
-        
-        <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
+          <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
 
-        <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
+          <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
 
-        <Stack.Screen name="NavbarCompiler" component={NavbarCompiler} options={{ headerShown: false }} />
-      </Stack.Navigator>
-    </NavigationContainer>
+          <Stack.Screen name="NavbarCompiler" component={NavbarCompiler} options={{ headerShown: false }} />
+        </Stack.Navigator>
+      </NavigationContainer>
 
+    </UserProvider>
   );
 }

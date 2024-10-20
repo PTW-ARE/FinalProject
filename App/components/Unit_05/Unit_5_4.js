@@ -7,6 +7,7 @@ import axios from "axios";
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledTouchableOpacity = styled(TouchableOpacity);
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Unit_5_4 = ({ navigation }) => {
     
@@ -34,11 +35,11 @@ const Unit_5_4 = ({ navigation }) => {
 
             <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 20 }}>
 
-                <StyledView className=' w-auto rounded-full'>
+                <StyledView className='bg-teal-500 mb-2 w-10/12 rounded-full'>
                     {parts
                         .filter((part) => part.PartID === 'P24')
                         .map((part) => (
-                            <StyledText key={part.PartID} className="text-2xl font-bold text-black p-2 text-left">
+                            <StyledText key={part.PartID} className="text-2xl font-bold text-white p-2 text-center">
                                 {part.PartName}
                             </StyledText>
                         ))}
@@ -89,17 +90,17 @@ const Unit_5_4 = ({ navigation }) => {
                             navigation.navigate('C_Part24');
                         }}>
                             
-                        <StyledText className="text-white bg-blue-500 text-lg font-bold p-3 rounded-full w-full text-center">
+                        <StyledText className="text-white bg-blue-600 text-lg shadow-md font-bold p-3 rounded-full w-full text-center">
                             ลองรัน
                         </StyledText>
                     </StyledTouchableOpacity>
                 </StyledView>
 
-                <StyledView className=' w-auto rounded-full'>
+                <StyledView className='bg-teal-500 mb-2 w-6/12 rounded-full'>
                     {parts
                         .filter((part) => part.PartID === 'P25')
                         .map((part) => (
-                            <StyledText key={part.PartID} className="text-2xl font-bold text-black p-2 text-left">
+                            <StyledText key={part.PartID} className="text-2xl font-bold text-white p-2 text-center">
                                 {part.PartName}
                             </StyledText>
                         ))}
@@ -132,14 +133,12 @@ const Unit_5_4 = ({ navigation }) => {
 
                 <StyledView className="flex-row justify-end mt-3">
 
-                    <StyledTouchableOpacity className="bg-green-500 p-3 rounded-full w-2/5 items-center"
+                    <StyledTouchableOpacity className="bg-green-500 p-3 shadow-md rounded-full w-2/5 items-center"
                         onPress={() => {
                             navigation.navigate('Menu');
                         }}
                     >
-                        <StyledText className="text-white text-base font-bold">
-                            กลับหน้าเมณู
-                        </StyledText>
+                        <Icon name="home" size={25} color="#f8fafc" />
                     </StyledTouchableOpacity>
                 </StyledView>
 

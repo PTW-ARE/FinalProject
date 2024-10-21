@@ -16,7 +16,7 @@ const Menu = ({ navigation }) => {
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
 
-            axios.get("http://192.168.0.149:8000/units")
+            axios.get("http://192.168.28.189:8000/units")
                 .then((response) => {
                     setUnits(response.data);
                 })

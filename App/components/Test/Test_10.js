@@ -21,7 +21,7 @@ const Test_10 = ({ route, navigation }) => {
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
-            axios.get("http://192.168.0.149:8000/test")
+            axios.get("http://192.168.28.189:8000/test")
                 .then((response) => {
                     setTests(response.data);
                 })
@@ -80,7 +80,7 @@ const Test_10 = ({ route, navigation }) => {
         console.log("Total score to be sent:", totalScore);
         
 
-        axios.post(`http://192.168.0.149:8000/saveTestScore/${userName}`, { score: totalScore })
+        axios.post(`http://192.168.28.189:8000/saveTestScore/${userName}`, { score: totalScore })
             .then((response) => {
 
                 console.log("Score saved successfully!", response.data);

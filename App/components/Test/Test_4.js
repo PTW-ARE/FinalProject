@@ -20,7 +20,7 @@ const Test_4 = ({ route, navigation }) => {
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
-            axios.get("http://192.168.0.149:8000/test")
+            axios.get("http://192.168.28.189:8000/test")
                 .then((response) => {
                     setTests(response.data);
                 })

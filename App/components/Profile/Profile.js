@@ -22,7 +22,7 @@ const Profile = ({ route, navigation }) => {
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
-            axios.get(`http://192.168.0.149:8000/customer/profile/${userName}`)
+            axios.get(`http://192.168.28.189:8000/customer/profile/${userName}`)
                 .then((response) => {
                     setCustomers(response.data);
                 })
@@ -66,7 +66,7 @@ const Profile = ({ route, navigation }) => {
             await AsyncStorage.removeItem('token');
 
             // ลบโปรไฟล์ของผู้ใช้
-            await axios.delete(`http://192.168.0.149:8000/customer/profile/${CustomerID}`);
+            await axios.delete(`http://192.168.28.189:8000/customer/profile/${CustomerID}`);
             console.log(`Customer with ID ${CustomerID} deleted successfully`);
 
             // รีเซ็ตสแต็กของการนำทาง และนำผู้ใช้ไปยังหน้า Login

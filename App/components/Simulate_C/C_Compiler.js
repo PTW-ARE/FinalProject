@@ -15,7 +15,7 @@ const C_Compiler = ({ navigation }) => {
     const [output, setOutput] = useState(''); // เก็บผลลัพธ์ที่ได้จากการรันโค้ด
 
     const runCode = () => {
-        axios.post('http://192.168.0.149:8000/compile', { code })
+        axios.post('http://192.168.28.189:8000/compile', { code })
             .then(response => {
                 setOutput(response.data.output); // เก็บผลลัพธ์ที่ได้ใน state
             })

@@ -15,7 +15,7 @@ const C_Part13 = ({ navigation }) => {
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
-            axios.get("http://192.168.0.149:8000/part")
+            axios.get("http://192.168.28.189:8000/part")
                 .then((response) => {
                     setParts(response.data);
                 })
@@ -28,7 +28,7 @@ const C_Part13 = ({ navigation }) => {
     }, [navigation]);
 
     const runCode = () => {
-        axios.post('http://192.168.0.149:8000/compile', {
+        axios.post('http://192.168.28.189:8000/compile', {
             code: parts.find(part => part.PartID === 'P13').RuncodeContent
         })
             .then(response => {

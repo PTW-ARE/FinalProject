@@ -17,7 +17,7 @@ const Navbar = ({ navigation = useNavigation() }) => {
 
     return (
 
-        <StyledView className="bg-blue-800 p-4 rounded-b-3xl flex-row justify-between pt-8">
+        <StyledView className="bg-blue-800 p-4 rounded-b-3xl flex-row justify-between pt-8 ">
 
 
             <StyledView>

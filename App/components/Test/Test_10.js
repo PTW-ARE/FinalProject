@@ -116,7 +116,7 @@ const Test_10 = ({ route, navigation }) => {
             <NavbarPostTest navigation={navigation} />
 
             <StyledView >
-                <StyledText className='bg-blue-800 p-2 mx-6 mt-5 mb-1 text-white text-center text-2xl font-bold rounded-xl'>
+                <StyledText className='bg-blue-800 p-2 mx-6 mt-5 mb-1 text-white text-center text-2xl font-bold rounded-xl '>
                     แบบทดสอบหลังเรียนข้อที่10
                 </StyledText>
             </StyledView>

@@ -69,7 +69,7 @@ const Unit_1 = ({ navigation }) => {
                     {parts
                         .filter((part) => part.PartID === 'P02')
                         .map((part) => (
-                            <StyledText key={part.PartID} className="text-base text-gray-800">
+                            <StyledText key={part.PartID} className="text-base text-gray-800 ">
                                 {part.ContentPart}
                             </StyledText>
                         ))}
@@ -121,7 +121,7 @@ const Unit_1 = ({ navigation }) => {
                         ))}
                 </StyledView>
 
-                <StyledView className="mb-4 p-4 bg-yellow-100  rounded-lg shadow-sm">
+                <StyledView className="mb-4 p-4 bg-yellow-100 rounded-lg shadow-sm">
                     {parts
                         .filter((part) => part.PartID === 'P03')
                         .map((part) => (

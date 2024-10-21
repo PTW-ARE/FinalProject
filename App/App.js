@@ -55,7 +55,7 @@ export default function App() {
     <UserProvider>
 
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Menu">
+        <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
           <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false }} />

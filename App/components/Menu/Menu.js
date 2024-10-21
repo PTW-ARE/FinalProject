@@ -31,7 +31,7 @@ const Menu = ({ navigation }) => {
 
 
     return (
-        <SafeAreaView key={units.length} className="flex-auto bg-white flex-col">
+        <SafeAreaView key={units.length} className="flex-auto  bg-white flex-col">
             <Navbar navigation={navigation} />
 
             <StyledView className="ml-8 mt-10 mb-1">

@@ -121,6 +121,52 @@ const Unit_1 = ({ navigation }) => {
                         ))}
                 </StyledView>
 
+                <StyledView className="mb-4 p-4 bg-blue-100 rounded-lg shadow-sm">
+                    <StyledText className="text-lg font-bold text-blue-700 mb-2">
+                        ตัวอย่างโค้ด
+                    </StyledText>
+
+                    <StyledView className="bg-gray-200 p-4 rounded-lg mb-2">
+                        {parts
+                            .filter((part) => part.PartID === 'P25')
+                            .map((part) => (
+                                <StyledText key={part.PartID} className="text-base text-gray-800">
+                                    {part.Example}
+                                </StyledText>
+                            ))}
+                    </StyledView>
+
+                    <StyledView className="bg-gray-100 p-4 rounded-lg">
+                        {parts
+                            .filter((part) => part.PartID === 'P26')
+                            .map((part) => (
+                                <StyledText key={part.PartID} className="text-base text-gray-800">
+                                    {part.ResultRuncode}
+                                </StyledText>
+                            ))}
+                    </StyledView>
+
+                    <StyledTouchableOpacity className="mt-4 items-center "
+                        onPress={() => {
+                            navigation.navigate('C_Part02');
+                        }}>
+                            
+                        <StyledText className="text-white bg-blue-600 text-lg font-bold shadow-md p-3 rounded-full w-full text-center">
+                            ลองรัน
+                        </StyledText>
+                    </StyledTouchableOpacity>
+                </StyledView>
+
+                <StyledView className='bg-teal-500 mb-2 w-3/4 rounded-full'>
+                    {parts
+                        .filter((part) => part.PartID === 'P03')
+                        .map((part) => (
+                            <StyledText key={part.PartID} className="text-2xl font-bold text-white p-2 text-center">
+                                {part.PartName}
+                            </StyledText>
+                        ))}
+                </StyledView>
+
                 <StyledView className="mb-4 p-4 bg-yellow-100 rounded-lg shadow-sm">
                     {parts
                         .filter((part) => part.PartID === 'P03')

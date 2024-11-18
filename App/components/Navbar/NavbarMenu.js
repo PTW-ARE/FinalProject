@@ -16,7 +16,7 @@ const Navbar = ({ navigation = useNavigation() }) => {
     <StyledView className="bg-blue-800 p-4 rounded-b-3xl flex-row justify-between pt-8">
       <StyledView></StyledView>
 
-      <StyledText className="text-white text-3xl font-bold flex-col ml-3 justify-center items-center">
+      <StyledText className="text-white text-3xl font-bold flex-col ml-3 justify-center items-center ">
         Beginning To C
       </StyledText>
 
